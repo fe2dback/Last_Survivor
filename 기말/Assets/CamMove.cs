@@ -6,10 +6,13 @@ public class CamMove : MonoBehaviour
 {
     // Start is called before the first frame update
     public Transform target;
+    public Transform Scope;
     float dist = 4.0f;
     float height = 0f;
     Transform tr;
     public static bool FPSviewMode = false;
+
+    float mouseX, mouseY;
 
     void Start()
     {
@@ -35,6 +38,11 @@ public class CamMove : MonoBehaviour
         {
             
             first();
+            if(Input.GetMouseButton(1))
+            {
+                aim();
+            }
+           
         }
         else
         {
@@ -48,9 +56,25 @@ public class CamMove : MonoBehaviour
         float yAngle = Mathf.LerpAngle(tr.eulerAngles.y, target.eulerAngles.y, 1);
         float xAngle = Mathf.LerpAngle(tr.eulerAngles.x, target.eulerAngles.x, 1);
         Quaternion rot = Quaternion.Euler(xAngle, yAngle, 0);
-        tr.position = target.position;
         tr.rotation = rot;
+        tr.position = target.position;
+        
     }
+
+    void aim()
+    {
+        mouseX += Input.GetAxis("Mouse X");
+        mouseY -= Input.GetAxis("Mouse Y");
+        //tr.rotation = Quaternion.Euler(mouseY, mouseX, 0);
+
+
+        float yAngle = Mathf.LerpAngle(tr.eulerAngles.y, target.eulerAngles.y, 1);
+        float xAngle = Mathf.LerpAngle(tr.eulerAngles.x, target.eulerAngles.x, 1);
+        Quaternion rot = Quaternion.Euler(xAngle, yAngle, 0);
+        tr.rotation = rot;
+        tr.position = Scope.position;
+    }
+
 
     void observer()
     {
