@@ -366,6 +366,9 @@
 "Assets/Gun.cs"
 "Assets/PlayerCamMove.cs"
 "Assets/PlayerMove.cs"
+"Assets/testCode/DetectionAreaTrigger_.cs"
+"Assets/testCode/EnemyController_.cs"
+"Assets/testCode/EnemyGun_.cs"
 -langversion:9.0
 /deterministic
 /optimize+

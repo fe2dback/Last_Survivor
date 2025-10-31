@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,6 +10,8 @@ public class EnemyController : MonoBehaviour
     Vector3 destination;
     bool findlogic = true;
     public bool readyfire = false;
+
+
     void Start()
     {
         Enemy = GetComponent<NavMeshAgent>();
@@ -57,4 +60,7 @@ public class EnemyController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+
+
 }

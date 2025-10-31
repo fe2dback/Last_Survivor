@@ -405,7 +405,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 107,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/UnityEngine.TestRunner.UnityAdditionalFile.txt"
@@ -431,7 +431,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 44696,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/UnityEngine.TestRunner.rsp2"
@@ -2476,7 +2476,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 52297,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.UnityAdditionalFile.txt"
@@ -2502,7 +2502,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 91358,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.rsp2"
@@ -3156,7 +3156,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 99497,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/UnityEditor.TestRunner.UnityAdditionalFile.txt"
@@ -3182,7 +3182,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 150146,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/UnityEditor.TestRunner.rsp2"
@@ -3847,7 +3847,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 157913,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.UnityAdditionalFile.txt"
@@ -3873,7 +3873,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 194116,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.rsp2"
@@ -4444,7 +4444,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 202602,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.AI.Navigation.Editor.ConversionSystem.UnityAdditionalFile.txt"
@@ -4470,7 +4470,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 236898,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.AI.Navigation.Editor.ConversionSystem.rsp2"
@@ -4999,7 +4999,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 245465,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.AI.Navigation.UnityAdditionalFile.txt"
@@ -5025,7 +5025,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 277907,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.AI.Navigation.rsp2"
@@ -5517,7 +5517,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 286210,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.EditorCoroutines.Editor.UnityAdditionalFile.txt"
@@ -5543,7 +5543,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 319897,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.EditorCoroutines.Editor.rsp2"
@@ -6049,7 +6049,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 328472,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.Performance.Profile-Analyzer.Editor.UnityAdditionalFile.txt"
@@ -6075,7 +6075,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 364927,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.Performance.Profile-Analyzer.Editor.rsp2"
@@ -6610,7 +6610,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 373496,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.PlasticSCM.Editor.UnityAdditionalFile.txt"
@@ -6636,7 +6636,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 450814,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.PlasticSCM.Editor.rsp2"
@@ -7578,7 +7578,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 458909,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.Rider.Editor.UnityAdditionalFile.txt"
@@ -7604,7 +7604,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 494976,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.Rider.Editor.rsp2"
@@ -8126,7 +8126,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 502982,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.Settings.Editor.UnityAdditionalFile.txt"
@@ -8152,7 +8152,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 537360,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.Settings.Editor.rsp2"
@@ -8667,7 +8667,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 545937,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.UnityAdditionalFile.txt"
@@ -8693,7 +8693,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 581134,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.rsp2"
@@ -9210,7 +9210,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 589751,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.UnityAdditionalFile.txt"
@@ -9236,7 +9236,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 623752,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.rsp2"
@@ -9742,7 +9742,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 632335,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.TextMeshPro.UnityAdditionalFile.txt"
@@ -9768,7 +9768,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 669519,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.TextMeshPro.rsp2"
@@ -10314,7 +10314,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 677805,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.Timeline.UnityAdditionalFile.txt"
@@ -10340,7 +10340,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 716052,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.Timeline.rsp2"
@@ -10900,7 +10900,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 724340,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.UnityAdditionalFile.txt"
@@ -10926,7 +10926,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 758367,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.rsp2"
@@ -11436,7 +11436,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 766917,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.Core.UnityAdditionalFile.txt"
@@ -11462,7 +11462,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 852683,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.Core.rsp2"
@@ -12378,7 +12378,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 860989,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualStudio.Editor.UnityAdditionalFile.txt"
@@ -12404,7 +12404,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 897353,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualStudio.Editor.rsp2"
@@ -12931,7 +12931,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 905371,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.AI.Navigation.Editor.UnityAdditionalFile.txt"
@@ -12957,7 +12957,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 939782,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.AI.Navigation.Editor.rsp2"
@@ -13514,7 +13514,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 948523,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.CollabProxy.Editor.UnityAdditionalFile.txt"
@@ -13540,7 +13540,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 982180,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.CollabProxy.Editor.rsp2"
@@ -14067,7 +14067,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 990826,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.PlasticSCM.Editor.Entities.UnityAdditionalFile.txt"
@@ -14093,7 +14093,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1024437,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.PlasticSCM.Editor.Entities.rsp2"
@@ -14601,7 +14601,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1033094,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.TestTools.CodeCoverage.Editor.UnityAdditionalFile.txt"
@@ -14627,7 +14627,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1070833,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.TestTools.CodeCoverage.Editor.rsp2"
@@ -15224,7 +15224,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1079178,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.TextMeshPro.Editor.UnityAdditionalFile.txt"
@@ -15250,7 +15250,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1116969,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.TextMeshPro.Editor.rsp2"
@@ -15822,7 +15822,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1125598,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.Timeline.Editor.UnityAdditionalFile.txt"
@@ -15848,7 +15848,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1182998,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.Timeline.Editor.rsp2"
@@ -16644,7 +16644,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1191633,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.Core.Editor.UnityAdditionalFile.txt"
@@ -16670,7 +16670,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1281525,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.Core.Editor.rsp2"
@@ -17664,7 +17664,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1290177,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.Flow.UnityAdditionalFile.txt"
@@ -17690,7 +17690,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1371246,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.Flow.rsp2"
@@ -18583,7 +18583,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1379642,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.AI.Navigation.Updater.UnityAdditionalFile.txt"
@@ -18609,7 +18609,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1413674,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.AI.Navigation.Updater.rsp2"
@@ -19146,7 +19146,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1422513,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.Flow.Editor.UnityAdditionalFile.txt"
@@ -19172,7 +19172,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1476263,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.Flow.Editor.rsp2"
@@ -19891,7 +19891,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1485099,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.State.UnityAdditionalFile.txt"
@@ -19917,7 +19917,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1520549,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.State.rsp2"
@@ -20443,7 +20443,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1529052,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.SettingsProvider.Editor.UnityAdditionalFile.txt"
@@ -20469,7 +20469,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1564031,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.SettingsProvider.Editor.rsp2"
@@ -21037,7 +21037,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1573070,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.State.Editor.UnityAdditionalFile.txt"
@@ -21063,7 +21063,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1614796,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.State.Editor.rsp2"
@@ -21653,7 +21653,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1623825,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.Shared.Editor.UnityAdditionalFile.txt"
@@ -21679,7 +21679,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1657765,
       "PayloadLength": 38,
-      "PayloadDebugContentSnippet": "/pathmap:\"C:\\Users\\박상준\\�",
+      "PayloadDebugContentSnippet": "/pathmap:\"C:\\GitDesktop\\test\\�",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Unity.VisualScripting.Shared.Editor.rsp2"
@@ -22224,7 +22224,7 @@
       "ActionType": "WriteFile",
       "PayloadOffset": 1666871,
       "PayloadLength": 25,
-      "PayloadDebugContentSnippet": "C:\\Users\\박상준\\기말",
+      "PayloadDebugContentSnippet": "C:\\GitDesktop\\test\\기말",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.UnityAdditionalFile.txt"
@@ -22236,7 +22236,7 @@
       "DisplayName": "Writing Assembly-CSharp.rsp",
       "ActionType": "WriteFile",
       "PayloadOffset": 1666982,
-      "PayloadLength": 32948,
+      "PayloadLength": 33060,
       "PayloadDebugContentSnippet": "-target:library\n-out:\"Library/",
       "Inputs": [],
       "Outputs": [
@@ -22248,7 +22248,7 @@
       "Annotation": "WriteText Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.rsp2",
       "DisplayName": "Writing Assembly-CSharp.rsp2",
       "ActionType": "WriteFile",
-      "PayloadOffset": 1700017,
+      "PayloadOffset": 1700129,
       "PayloadLength": 0,
       "PayloadDebugContentSnippet": "",
       "Inputs": [],
@@ -22506,6 +22506,9 @@
         "Assets/Gun.cs",
         "Assets/PlayerCamMove.cs",
         "Assets/PlayerMove.cs",
+        "Assets/testCode/DetectionAreaTrigger_.cs",
+        "Assets/testCode/EnemyController_.cs",
+        "Assets/testCode/EnemyGun_.cs",
         "C:/Program Files/Unity/Hub/Editor/2022.3.33f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll",
         "C:/Program Files/Unity/Hub/Editor/2022.3.33f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll",
         "Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.rsp"
@@ -22766,7 +22769,7 @@
       "Annotation": "WriteText Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll.mvfrm.rsp",
       "DisplayName": "Writing Assembly-CSharp.dll.mvfrm.rsp",
       "ActionType": "WriteFile",
-      "PayloadOffset": 1700113,
+      "PayloadOffset": 1700225,
       "PayloadLength": 9729,
       "PayloadDebugContentSnippet": "Library\\Bee\\artifacts\\mvdfrm\\U",
       "Inputs": [],
@@ -24008,7 +24011,7 @@
     {
       "Annotation": "BuildPlayerDataGenerator Library/BuildPlayerData/Editor/TypeDb-All.json",
       "DisplayName": "BuildPlayerDataGenerator TypeDb-All",
-      "Action": "\"C:/Program Files/Unity/Hub/Editor/2022.3.33f1/Editor/Data\\Tools\\netcorerun\\netcorerun.exe\" \"C:/Program Files/Unity/Hub/Editor/2022.3.33f1/Editor/Data/Tools/BuildPlayerDataGenerator/BuildPlayerDataGenerator.exe\" -a=\"C:\\Users\\박상준\\기말\\Library\\ScriptAssemblies\\Assembly-CSharp.dll\" -a=\"C:\\Users\\박상준\\기말\\Library\\ScriptAssemblies\\Unity.AI.Navigation.dll\" -a=\"C:\\Users\\박상준\\기말\\Library\\ScriptAssemblies\\Unity.TextMeshPro.dll\" -a=\"C:\\Users\\박상준\\기말\\Library\\ScriptAssemblies\\Unity.Timeline.dll\" -a=\"C:\\Users\\박상준\\기말\\Library\\ScriptAssemblies\\Unity.VisualScripting.Core.dll\" -a=\"C:\\Users\\박상준\\기말\\Library\\ScriptAssemblies\\Unity.VisualScripting.Flow.dll\" -a=\"C:\\Users\\박상준\\기말\\Library\\ScriptAssemblies\\Unity.VisualScripting.State.dll\" -a=\"C:\\Users\\박상준\\기말\\Library\\ScriptAssemblies\\UnityEngine.TestRunner.dll\" -a=\"C:\\Users\\박상준\\기말\\Library\\ScriptAssemblies\\UnityEngine.UI.dll\" -a=\"C:\\Users\\박상준\\기말\\Library\\PackageCache\\com.unity.ext.nunit@1.0.6\\net35\\unity-custom\\nunit.framework.dll\" -a=\"C:\\Users\\박상준\\기말\\Library\\PackageCache\\com.unity.testtools.codecoverage@1.2.5\\lib\\ReportGenerator\\ReportGeneratorMerged.dll\" -a=\"C:\\Users\\박상준\\기말\\Library\\PackageCache\\com.unity.visualscripting@1.9.4\\Runtime\\VisualScripting.Flow\\Dependencies\\NCalc\\Unity.VisualScripting.Antlr3.Runtime.dll\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.33f1\\Editor\\Data\\Managed\\UnityEngine\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.33f1\\Editor\\Data\\NetStandard\\compat\\2.1.0\\shims\\netfx\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.33f1\\Editor\\Data\\NetStandard\\compat\\2.1.0\\shims\\netstandard\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.33f1\\Editor\\Data\\NetStandard\\Extensions\\2.0.0\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.33f1\\Editor\\Data\\NetStandard\\ref\\2.1.0\" -s=\"C:\\Users\\박상준\\기말\\Library\\ScriptAssemblies\" -s=\"C:\\Users\\박상준\\기말\\Library\\PackageCache\\com.unity.ext.nunit@1.0.6\\net35\\unity-custom\" -s=\"C:\\Users\\박상준\\기말\\Library\\PackageCache\\com.unity.testtools.codecoverage@1.2.5\\lib\\ReportGenerator\" -s=\"C:\\Users\\박상준\\기말\\Library\\PackageCache\\com.unity.visualscripting@1.9.4\\Runtime\\VisualScripting.Flow\\Dependencies\\NCalc\" -o=\"Library/BuildPlayerData/Editor\" -rn=\"\" -tn=\"TypeDb-All.json\"",
+      "Action": "\"C:/Program Files/Unity/Hub/Editor/2022.3.33f1/Editor/Data\\Tools\\netcorerun\\netcorerun.exe\" \"C:/Program Files/Unity/Hub/Editor/2022.3.33f1/Editor/Data/Tools/BuildPlayerDataGenerator/BuildPlayerDataGenerator.exe\" -a=\"C:\\GitDesktop\\test\\기말\\Library\\ScriptAssemblies\\Assembly-CSharp.dll\" -a=\"C:\\GitDesktop\\test\\기말\\Library\\ScriptAssemblies\\Unity.AI.Navigation.dll\" -a=\"C:\\GitDesktop\\test\\기말\\Library\\ScriptAssemblies\\Unity.TextMeshPro.dll\" -a=\"C:\\GitDesktop\\test\\기말\\Library\\ScriptAssemblies\\Unity.Timeline.dll\" -a=\"C:\\GitDesktop\\test\\기말\\Library\\ScriptAssemblies\\Unity.VisualScripting.Core.dll\" -a=\"C:\\GitDesktop\\test\\기말\\Library\\ScriptAssemblies\\Unity.VisualScripting.Flow.dll\" -a=\"C:\\GitDesktop\\test\\기말\\Library\\ScriptAssemblies\\Unity.VisualScripting.State.dll\" -a=\"C:\\GitDesktop\\test\\기말\\Library\\ScriptAssemblies\\UnityEngine.TestRunner.dll\" -a=\"C:\\GitDesktop\\test\\기말\\Library\\ScriptAssemblies\\UnityEngine.UI.dll\" -a=\"C:\\GitDesktop\\test\\기말\\Library\\PackageCache\\com.unity.ext.nunit@1.0.6\\net35\\unity-custom\\nunit.framework.dll\" -a=\"C:\\GitDesktop\\test\\기말\\Library\\PackageCache\\com.unity.testtools.codecoverage@1.2.5\\lib\\ReportGenerator\\ReportGeneratorMerged.dll\" -a=\"C:\\GitDesktop\\test\\기말\\Library\\PackageCache\\com.unity.visualscripting@1.9.4\\Runtime\\VisualScripting.Flow\\Dependencies\\NCalc\\Unity.VisualScripting.Antlr3.Runtime.dll\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.33f1\\Editor\\Data\\Managed\\UnityEngine\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.33f1\\Editor\\Data\\NetStandard\\compat\\2.1.0\\shims\\netfx\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.33f1\\Editor\\Data\\NetStandard\\compat\\2.1.0\\shims\\netstandard\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.33f1\\Editor\\Data\\NetStandard\\Extensions\\2.0.0\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.33f1\\Editor\\Data\\NetStandard\\ref\\2.1.0\" -s=\"C:\\GitDesktop\\test\\기말\\Library\\ScriptAssemblies\" -s=\"C:\\GitDesktop\\test\\기말\\Library\\PackageCache\\com.unity.ext.nunit@1.0.6\\net35\\unity-custom\" -s=\"C:\\GitDesktop\\test\\기말\\Library\\PackageCache\\com.unity.testtools.codecoverage@1.2.5\\lib\\ReportGenerator\" -s=\"C:\\GitDesktop\\test\\기말\\Library\\PackageCache\\com.unity.visualscripting@1.9.4\\Runtime\\VisualScripting.Flow\\Dependencies\\NCalc\" -o=\"Library/BuildPlayerData/Editor\" -rn=\"\" -tn=\"TypeDb-All.json\"",
       "Inputs": [
         "C:/Program Files/Unity/Hub/Editor/2022.3.33f1/Editor/Data/Tools/netcorerun/netcorerun.exe",
         "C:/Program Files/Unity/Hub/Editor/2022.3.33f1/Editor/Data/Tools/BuildPlayerDataGenerator/BuildPlayerDataGenerator.exe",
@@ -24311,6 +24314,6 @@
   "SharedResources": [],
   "Scanners": [],
   "Identifier": "Library/Bee/1900b0aE.dag.json",
-  "PayloadsFile": "C:/Users/박상준/기말/Library/Bee/1900b0aE.dag.payloads",
+  "PayloadsFile": "C:/GitDesktop/test/기말/Library/Bee/1900b0aE.dag.payloads",
   "RelativePathToRoot": "../.."
 }

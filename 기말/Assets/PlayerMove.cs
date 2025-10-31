@@ -14,7 +14,7 @@ public class PlayerMove : MonoBehaviour
 
     float speed = 1f;
     float sprint = 2f;
-    float JumpPower = 0.06f;
+    float JumpPower = 0.25f;
 
     float yAxis = 0f;
 
