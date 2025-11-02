@@ -33,19 +33,19 @@ public class EnemyController_ : MonoBehaviour
 
     IEnumerator Idle()
     {
-        Debug.Log("Idle State");
+        //Debug.Log("Idle State");
         yield return null;
     }
 
     IEnumerator Chase()
     {
-        Debug.Log("Chase State");
+        //Debug.Log("Chase State");
         yield return null;
     }
 
     IEnumerator Attack()
     {
-        Debug.Log("Attack State");
+        //Debug.Log("Attack State");
         yield return null;
     }
 

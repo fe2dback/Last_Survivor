@@ -14,10 +14,11 @@ public class PlayerMove : MonoBehaviour
 
     float speed = 1f;
     float sprint = 2f;
-    float JumpPower = 0.25f;
+    float JumpPower = 1.5f;
 
     float yAxis = 0f;
 
+    float rot;
 
     Vector3 sumVector, xVector, yVector, zVector;
 
@@ -49,22 +50,33 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    IEnumerator waitTimeAnim(float time, string anim)
-    {
-        yield return new WaitForSeconds(time);
-        if (animator != null)
-        {
-
-            animator.SetBool(anim, true);
-        }
-
-    }
 
     void playerInput()
     {
         moveHV(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
         transform.Rotate(0, Input.GetAxis("Mouse X"), 0);
+    }
+
+    void MoveRotate(float Ix)
+    {
+
+        rot += Time.deltaTime * 0.25f;
+        rot = Mathf.Clamp(rot, 0, 0.5f);
+
+        if(Ix > 0)
+        {
+            transform.Rotate(0, rot, 0);
+        }
+        else if(Ix < 0)
+        {
+            transform.Rotate(0, -rot, 0);
+        }
+        else
+        {
+            rot = 0;
+        }
+        Debug.Log(rot);
     }
 
     void moveHV(float Ix, float Iz)
@@ -74,17 +86,26 @@ public class PlayerMove : MonoBehaviour
 
         sumVector = xVector + moveJ() + zVector;
         CC.Move(sumVector);
-
-        if(Iz > 0)
+;       if(Iz !=0)
+        {
+            MoveRotate(Ix);
+        }
+        
+        if (Iz > 0)
         {
             speed = 1f;
             animator.SetBool("isWalk", true);
- 
+
 
             if(Input.GetKey(KeyCode.LeftShift))
             {
                 animator.SetBool("isRun", true);       
                 speed = sprint;
+                
+                if(Ix != 0)
+                {
+                    MoveRotate(Ix);
+                }
             }
             else
             {
@@ -106,12 +127,12 @@ public class PlayerMove : MonoBehaviour
 
         }
 
-        if (Ix > 0)
+        if (Ix > 0 && Iz == 0)
         {
             animator.SetBool("isRight", true);
 
         }
-        else if (Ix < 0)
+        else if (Ix < 0 && Iz == 0)
         {
             animator.SetBool("isLeft", true);
         }
@@ -128,11 +149,9 @@ public class PlayerMove : MonoBehaviour
         if (CC.isGrounded == true)
         {
             yAxis = 0f;
-            if (Input.GetButton("Jump"))
+            if (Input.GetButtonDown("Jump"))
             {
-                yAxis = JumpPower;
-
-                
+                yAxis = JumpPower*0.05f;   
             }
         }
         else
