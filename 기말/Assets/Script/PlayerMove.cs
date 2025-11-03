@@ -194,4 +194,13 @@ public class PlayerMove : MonoBehaviour
         }
         return yVector = new Vector3(0, yAxis, 0);
     }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "EnemyBullet")
+        {
+            Debug.Log("플레이어 피격");
+        }
+}
 }

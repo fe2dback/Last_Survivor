@@ -21,7 +21,7 @@ public class EnemyGun_ : MonoBehaviour
         if(enemyController_.readyfire_ == true)
         {
             transform.LookAt(enemyController_.player_body_.position);
-            shoot_(0.3f);
+            shoot_(3f);
         }
         else
         {
