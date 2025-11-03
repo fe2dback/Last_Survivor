@@ -14,7 +14,8 @@ public class PlayerMove : MonoBehaviour
 
     float speed = 1f;
     float sprint = 2f;
-    float JumpPower = 1.5f;
+    float sitSpeed = 0.5f;
+    float JumpPower = 0.075f;
 
     float yAxis = 0f;
 
@@ -33,12 +34,13 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         playerInput();
-        //Debug.Log(CC.velocity.magnitude);
         
+        //Debug.Log(CC.velocity.magnitude);
+
     }
 
 
-    IEnumerator DecreaseValue(float start, float end, float duration)
+    IEnumerator DecreaseSpeed(float start, float end, float duration) // speed 감소 코루틴
     {
         float timer = 0f;
         while (timer < duration)
@@ -51,53 +53,55 @@ public class PlayerMove : MonoBehaviour
     }
 
 
-    void playerInput()
+    void playerInput() //플레이어의 마우스, 키보드 입력을 받는 함수
     {
         moveHV(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-
+        Interactive(Input.GetKeyDown(KeyCode.E));
+        Sit(Input.GetKey(KeyCode.C));
         transform.Rotate(0, Input.GetAxis("Mouse X"), 0);
     }
 
-    void MoveRotate(float Ix)
+    void MoveRotate(float Ix) // 대각선이동의 회전
     {
 
-        rot += Time.deltaTime * 0.25f;
-        rot = Mathf.Clamp(rot, 0, 0.5f);
+        //rot += Time.deltaTime * 0.25f;
+        //rot = Mathf.Clamp(rot, 0, 0.5f);
+        rot = 0.25f;
+        if(CamMove.FPSviewMode == false) // 1인칭모드일때는 회전을 적용하면 화면이 개1같이돌아감
+        {
+            if (Ix > 0)
+            {
+                transform.Rotate(0, rot, 0);
+            }
+            else if (Ix < 0)
+            {
+                transform.Rotate(0, -rot, 0);
+            }
+        }
 
-        if(Ix > 0)
-        {
-            transform.Rotate(0, rot, 0);
-        }
-        else if(Ix < 0)
-        {
-            transform.Rotate(0, -rot, 0);
-        }
-        else
-        {
-            rot = 0;
-        }
-        Debug.Log(rot);
     }
 
-    void moveHV(float Ix, float Iz)
+    void moveHV(float Ix, float Iz) //플레이어의 이동 처리
     {
         xVector = transform.right * speed * Ix * Time.deltaTime;
         zVector = transform.forward * speed * Iz * Time.deltaTime;
 
-        sumVector = xVector + moveJ() + zVector;
-        CC.Move(sumVector);
-;       if(Iz !=0)
+        sumVector = xVector + Jump() + zVector; //-> 여기가 문제인듯
+        CC.Move(sumVector); // CharacterController를 이용한 이동
+
+
+        ;       if(Iz !=0)
         {
             MoveRotate(Ix);
         }
         
-        if (Iz > 0)
+        if (Iz > 0) // 앞으로 움직일때
         {
             speed = 1f;
             animator.SetBool("isWalk", true);
 
 
-            if(Input.GetKey(KeyCode.LeftShift))
+            if(Input.GetKey(KeyCode.LeftShift)) //달릴때
             {
                 animator.SetBool("isRun", true);       
                 speed = sprint;
@@ -111,11 +115,11 @@ public class PlayerMove : MonoBehaviour
             {
                 animator.SetBool("isRun", false);
 
-                StartCoroutine(DecreaseValue(sprint, speed, 0.2f));
+                StartCoroutine(DecreaseSpeed(sprint, speed, 0.2f));
             }
 
         }
-        else if(Iz < 0) 
+        else if(Iz < 0) //뒤로 갈때
         {
             animator.SetBool("isBackWalk", true);
         }
@@ -127,12 +131,12 @@ public class PlayerMove : MonoBehaviour
 
         }
 
-        if (Ix > 0 && Iz == 0)
+        if (Ix > 0 && Iz == 0)// 앞으로 가지 않으면서 오른쪽으로 갈때
         {
             animator.SetBool("isRight", true);
 
         }
-        else if (Ix < 0 && Iz == 0)
+        else if (Ix < 0 && Iz == 0) // 앞으로 가지 않으면서 왼쪽으로 갈때
         {
             animator.SetBool("isLeft", true);
         }
@@ -143,15 +147,44 @@ public class PlayerMove : MonoBehaviour
         }
         
     }
+
+    void AnimesState()
+    {
+
+    }
+
+    void Sit(bool PressC)
+    {
+        if(PressC == true)
+        {
+            Debug.Log("C키 눌림");
+            speed = sitSpeed;
+        }
+        else
+        {
+            speed = 1f;
+        }
+
+        
+    }
+
+
+    void Interactive(bool PressE) // 상호작용(E키)
+    {
+        if (PressE == true)
+        {
+            Debug.Log("E키 눌림");
+        }
+    }
     
-    Vector3 moveJ()
+    Vector3 Jump()
     {
         if (CC.isGrounded == true)
         {
             yAxis = 0f;
             if (Input.GetButtonDown("Jump"))
             {
-                yAxis = JumpPower*0.05f;   
+                yAxis = JumpPower;
             }
         }
         else
