@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEditor.PlayerSettings;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -23,7 +24,8 @@ public class PlayerMove : MonoBehaviour
 
     Vector3 sumVector, xVector, yVector, zVector;
 
-    // Start is called before the first frame update
+
+
     void Start()
     {
         CC = GetComponent<CharacterController>();
@@ -36,7 +38,6 @@ public class PlayerMove : MonoBehaviour
         playerInput();
         
         //Debug.Log(CC.velocity.magnitude);
-
     }
 
 
@@ -145,16 +146,12 @@ public class PlayerMove : MonoBehaviour
             animator.SetBool("isRight", false);
             animator.SetBool("isLeft", false);
         }
-        
-    }
-
-    void AnimesState()
-    {
 
     }
 
-    void Sit(bool PressC)
-    {
+
+     void Sit(bool PressC)
+     {
         if(PressC == true)
         {
             Debug.Log("C키 눌림");
@@ -166,7 +163,7 @@ public class PlayerMove : MonoBehaviour
         }
 
         
-    }
+     }
 
 
     void Interactive(bool PressE) // 상호작용(E키)

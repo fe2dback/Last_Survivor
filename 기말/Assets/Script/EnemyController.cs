@@ -35,7 +35,11 @@ public class EnemyController : MonoBehaviour
             Enemy.SetDestination(destination); // 랜덤으로 생성된 위치로 이동
             if (Enemy.remainingDistance <= Enemy.stoppingDistance) // 멈춰야하는 크기보다 남은거리가 작으면, 즉 도착하면
             {
-                set_Path(); //목적지 갱신
+                set_Path();
+                //listensound
+                //questlocation
+
+                //목적지 갱신
             }
         }
         else

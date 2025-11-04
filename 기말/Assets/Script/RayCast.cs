@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class RayCast : MonoBehaviour
 {
     RaycastHit hit;
+
+    GameObject ob;
+    public Transform getRay;
+    Vector3 pos;
     float maxDistance = 2f;
     // Start is called before the first frame update
     void Start()
@@ -15,12 +20,36 @@ public class RayCast : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(transform.position, transform.forward * maxDistance, Color.yellow);
+        Debug.DrawRay(getRay.position, getRay.forward * 10f, Color.red);
+        //Debug.DrawRay(transform.position, transform.forward * maxDistance, Color.yellow);
         if (Input.GetKeyDown(KeyCode.F))
         {
             ShootRay();
         }
+        else if(Input.GetMouseButton(0))
+        {
+            playerHand();
+        }
+
+    }
+
+    void playerHand()
+    {
         
+        if (Physics.Raycast(getRay.position, getRay.forward, out hit, 15f))
+        {
+            pos = hit.transform.position;
+            if (hit.collider.gameObject.tag == "box" && Input.GetMouseButton(0))
+            {
+                ob = hit.collider.gameObject;
+
+                ob.transform.position = getRay.position + getRay.forward * 4f;
+                Debug.Log("box hit");
+
+            }
+
+            //Debug.Log(hit.collider.gameObject.name.ToString());
+        }
     }
 
     void ShootRay()
