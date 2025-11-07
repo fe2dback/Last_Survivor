@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.PlayerSettings;
 
@@ -11,10 +12,11 @@ public class RayCast : MonoBehaviour
     public Transform getRay;
     Vector3 pos;
     float maxDistance = 2f;
+    itemManager itemManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -60,7 +62,9 @@ public class RayCast : MonoBehaviour
             
            if(LayerMask.LayerToName(hit.collider.gameObject.layer) == "item")
             {
-                Debug.Log("아이템 획득!");
+                //Debug.Log(hit.collider.gameObject.name);
+                itemManager.getItem("구급상자");
+
                 Destroy(hit.collider.gameObject);
                 //블럭형 아이템을 들고 옮길 수 있게 구현할것
             }

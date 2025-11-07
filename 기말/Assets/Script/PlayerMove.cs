@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 using static UnityEditor.PlayerSettings;
@@ -8,8 +9,6 @@ public class PlayerMove : MonoBehaviour
 {
     CharacterController CC;
     Animator animator;
-
-
     float gravity = 0.3f;
 
 
@@ -173,6 +172,8 @@ public class PlayerMove : MonoBehaviour
             Debug.Log("EÅ° ´­¸²");
         }
     }
+
+    
     
     Vector3 Jump()
     {
