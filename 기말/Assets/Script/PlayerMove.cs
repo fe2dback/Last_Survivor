@@ -11,9 +11,10 @@ public class PlayerMove : MonoBehaviour
     Animator animator;
     float gravity = 0.3f;
 
-
-    float speed = 1f;
-    float sprint = 2f;
+    float speed = 3f;
+    float default_speed_front = 3f;
+    float default_speed_backward = 2f;
+    float sprint = 6f;
     float sitSpeed = 0.5f;
     float JumpPower = 0.075f;
 
@@ -29,14 +30,15 @@ public class PlayerMove : MonoBehaviour
     {
         CC = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
         playerInput();
-        
-        //Debug.Log(CC.velocity.magnitude);
+
+        Debug.Log(CC.velocity.magnitude);
     }
 
 
@@ -56,7 +58,6 @@ public class PlayerMove : MonoBehaviour
     void playerInput() //플레이어의 마우스, 키보드 입력을 받는 함수
     {
         moveHV(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        Interactive(Input.GetKeyDown(KeyCode.E));
         Sit(Input.GetKey(KeyCode.C));
         transform.Rotate(0, Input.GetAxis("Mouse X"), 0);
     }
@@ -89,52 +90,51 @@ public class PlayerMove : MonoBehaviour
         sumVector = xVector + Jump() + zVector; //-> 여기가 문제인듯
         CC.Move(sumVector); // CharacterController를 이용한 이동
 
-
-        ;       if(Iz !=0)
+        /*
+        if(Iz !=0)
         {
             MoveRotate(Ix);
         }
-        
+        */
         if (Iz > 0) // 앞으로 움직일때
         {
-            speed = 1f;
             animator.SetBool("isWalk", true);
 
 
             if(Input.GetKey(KeyCode.LeftShift)) //달릴때
             {
-                animator.SetBool("isRun", true);       
+                animator.SetBool("isRun", true);
                 speed = sprint;
-                
+                /*
                 if(Ix != 0)
                 {
+
                     MoveRotate(Ix);
                 }
+                */
             }
             else
             {
                 animator.SetBool("isRun", false);
-
-                StartCoroutine(DecreaseSpeed(sprint, speed, 0.2f));
+                StartCoroutine(DecreaseSpeed(sprint, default_speed_front, 0.2f));
             }
 
         }
         else if(Iz < 0) //뒤로 갈때
         {
-            animator.SetBool("isBackWalk", true);
+            speed = default_speed_backward;
+            animator.SetBool("isRun", false);
+            animator.SetBool("isBack", true);
         }
         else
         {
-            animator.SetBool("isBackWalk", false);
             animator.SetBool("isWalk", false);
-            animator.SetBool("isRun", false);
-
+            animator.SetBool("isBack", false);
         }
 
         if (Ix > 0 && Iz == 0)// 앞으로 가지 않으면서 오른쪽으로 갈때
         {
             animator.SetBool("isRight", true);
-
         }
         else if (Ix < 0 && Iz == 0) // 앞으로 가지 않으면서 왼쪽으로 갈때
         {
@@ -144,7 +144,10 @@ public class PlayerMove : MonoBehaviour
         {
             animator.SetBool("isRight", false);
             animator.SetBool("isLeft", false);
+            
         }
+
+
 
     }
 
@@ -154,26 +157,15 @@ public class PlayerMove : MonoBehaviour
         if(PressC == true)
         {
             Debug.Log("C키 눌림");
-            speed = sitSpeed;
+            //speed = sitSpeed;
         }
         else
         {
-            speed = 1f;
+            //speed = 1f;
         }
 
         
      }
-
-
-    void Interactive(bool PressE) // 상호작용(E키)
-    {
-        if (PressE == true)
-        {
-            Debug.Log("E키 눌림");
-        }
-    }
-
-    
     
     Vector3 Jump()
     {

@@ -1,39 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager GM;
 
-
-    private float exp;
-    private int level;
-
-
-    private int hp;
-    private float mp; //스테미나 or 마나
-    
-    
+    public int level { get; private set; } = 0;
 
     private float leftTime = 30f;
 
-    private int attack; //공격력
-    private int def; // 방어력
-
-
-    void Start()
+    private void Awake()
     {
-        StartCoroutine(timeDecrease());
+        if(GM == null)
+        {
+            GM = this;
+        }
+        else
+        {
+            Debug.LogError("중복된 인스턴스");
+            Destroy(gameObject);
+        }
     }
 
 
-    private void Update()
+    public void AddLevel()
     {
-        
+        level++;
+        Debug.Log(level);
     }
-
-
-
     IEnumerator timeDecrease()
     {
         while (true)
@@ -48,23 +44,6 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
     }
-
-
-
-
-
-
-    int getLevel()
-    {
-        return level;
-    }
-
-    void setLevel(int get)
-    {
-        this.level += get;
-    }
-
-
 
 
 

@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - EnemyBullet
   - box
+  - item
   layers:
   - Default
   - TransparentFX

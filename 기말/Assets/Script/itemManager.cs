@@ -2,15 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class itemManager : MonoBehaviour
+public class ItemManager : MonoBehaviour
 {
-
-    private GameObject[] inventory = new GameObject[5]; //¿Œ∫•≈‰∏Æ 6ƒ≠
-    private int[] value = new int[5];
+    public static ItemManager itemManager;
+    private Dictionary<string, int> item = new Dictionary<string, int>();
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        if (itemManager == null)
+        {
+            itemManager = this;
+        }
+        else
+        {
+            Debug.LogError("¡ﬂ∫πµ» ¿ŒΩ∫≈œΩ∫");
+            Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+
     }
 
     // Update is called once per frame
@@ -18,24 +30,57 @@ public class itemManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.I))
         {
-            showItem();
+            DisplayInventory();
         }
+        
     }
 
-    public void getItem(string itemTag)
+
+    public void getItem(string itemName, int quantity)
     {
-        if (itemTag == "±∏±ﬁªÛ¿⁄")
+        if (item.ContainsKey(itemName))
         {
-            value[0] += 1;
+            Debug.Log(itemName + "»πµÊ");
+            item[itemName] += quantity;
+        }
+        else
+        {
+            Debug.Log(itemName + "»πµÊ");
+            item.Add(itemName, quantity);
+        }
+    }
 
+    public void RemoveItem(string itemName, int quantity)
+    {
+        if (item.ContainsKey(itemName))
+        {
+            if (item[itemName] < quantity)
+            {
+                Debug.Log("ºˆ∑Æ∫Œ¡∑");
+            }
+            else 
+            {
+                item[itemName] -= quantity;
+                Debug.Log("¡¶∞≈µ ");
+            }
+
+            if (item[itemName] == 0)
+            {
+                item.Remove(itemName);
+            }
+            
         }
 
-
     }
 
-
-    void showItem()
+    private void DisplayInventory()
     {
-        Debug.Log(value[0]);
+        string inventoryStatus = "";
+        foreach (KeyValuePair<string, int> item in item)
+        {
+            inventoryStatus += $"{item.Key}: {item.Value}∞≥\n";
+        }
+        Debug.Log(inventoryStatus);
     }
+
 }

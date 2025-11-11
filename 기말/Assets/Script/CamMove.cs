@@ -7,7 +7,7 @@ public class CamMove : MonoBehaviour
     // Start is called before the first frame update
     public Transform target;
     public Transform Scope;
-    float dist = 4.0f;
+    float dist = 1.0f;
     float height = 0f;
     Transform tr;
     public static bool FPSviewMode = false;
@@ -38,7 +38,7 @@ public class CamMove : MonoBehaviour
         {
             
             first();
-            if(Input.GetMouseButton(1))
+            if(PlayerInput.MouseR)
             {
                 aim();
             }
@@ -78,10 +78,10 @@ public class CamMove : MonoBehaviour
 
     void observer()
     {
-        float yAngle = Mathf.LerpAngle(tr.eulerAngles.y, target.eulerAngles.y, Time.deltaTime * 2);
-        float xAngle = Mathf.LerpAngle(tr.eulerAngles.x, target.eulerAngles.x, Time.deltaTime * 2);
+        float yAngle = Mathf.LerpAngle(tr.eulerAngles.y, target.eulerAngles.y, 1);
+        float xAngle = Mathf.LerpAngle(tr.eulerAngles.x, target.eulerAngles.x, 1);
         Quaternion rot = Quaternion.Euler(xAngle, yAngle, 0);
-        tr.position = target.position - (rot * Vector3.forward * dist) + (Vector3.up * height);
+        tr.position = target.position - (rot * Vector3.forward * dist) + (rot * Vector3.up * height);
         tr.LookAt(target);
     }
 
