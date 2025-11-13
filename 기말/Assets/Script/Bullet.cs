@@ -5,13 +5,12 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     Rigidbody bullets;
-    public float bullet_speed;
+    public float bulletspeed;
     // Start is called before the first frame update
     void Start()
     {
         bullets = GetComponent<Rigidbody>();
-        bullets.AddForce(transform.forward * bullet_speed);
-        Destroy(gameObject, 3f);
+        bullets.AddForce(transform.forward * bulletspeed);
     }
 
     // Update is called once per frame

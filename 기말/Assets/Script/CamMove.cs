@@ -6,17 +6,21 @@ public class CamMove : MonoBehaviour
 {
     // Start is called before the first frame update
     public Transform target;
-    public Transform Scope;
-    float dist = 1.0f;
+    public Transform first;
+    public Transform Third;
+    float dist = 2.0f;
     float height = 0f;
-    Transform tr;
+    Transform CamSet;
+    bool test =false;
+
     public static bool FPSviewMode = false;
 
     float mouseX, mouseY;
 
     void Start()
     {
-        tr = GetComponent<Transform>();
+        CamSet = GetComponent<Transform>();
+
     }
 
 
@@ -34,55 +38,46 @@ public class CamMove : MonoBehaviour
 
     void LateUpdate()
     {
-        if (FPSviewMode == true)
+        Observer();
+        if (Input.GetMouseButtonDown(1))
         {
-            
-            first();
-            if(PlayerInput.MouseR)
-            {
-                aim();
-            }
-           
+            test = !test;
         }
-        else
+
+        if (test == true && PlayerInput.Hand_Rifle == true)
         {
-            observer();
+            ObserverAim();
         }
+
+
+
+    }
+
+    void firsts()
+    {
+        float yAngle = Mathf.LerpAngle(CamSet.eulerAngles.y, target.eulerAngles.y, 1);
+        float xAngle = Mathf.LerpAngle(CamSet.eulerAngles.x, target.eulerAngles.x, 1);
+        Quaternion rot = Quaternion.Euler(xAngle, yAngle, 0);
+        CamSet.rotation = rot;
+        CamSet.position = first.position;
         
     }
 
-    void first()
+    void ObserverAim()
     {
-        float yAngle = Mathf.LerpAngle(tr.eulerAngles.y, target.eulerAngles.y, 1);
-        float xAngle = Mathf.LerpAngle(tr.eulerAngles.x, target.eulerAngles.x, 1);
-        Quaternion rot = Quaternion.Euler(xAngle, yAngle, 0);
-        tr.rotation = rot;
-        tr.position = target.position;
+        first.rotation = target.rotation;
+        CamSet.position = Third.position;
         
     }
 
-    void aim()
+
+    void Observer()
     {
-        mouseX += Input.GetAxis("Mouse X");
-        mouseY -= Input.GetAxis("Mouse Y");
-        //tr.rotation = Quaternion.Euler(mouseY, mouseX, 0);
-
-
-        float yAngle = Mathf.LerpAngle(tr.eulerAngles.y, target.eulerAngles.y, 1);
-        float xAngle = Mathf.LerpAngle(tr.eulerAngles.x, target.eulerAngles.x, 1);
+        float yAngle = Mathf.LerpAngle(CamSet.eulerAngles.y, target.eulerAngles.y, 0.5f);
+        float xAngle = Mathf.LerpAngle(CamSet.eulerAngles.x, target.eulerAngles.x, 0.5f);
         Quaternion rot = Quaternion.Euler(xAngle, yAngle, 0);
-        tr.rotation = rot;
-        tr.position = Scope.position;
-    }
-
-
-    void observer()
-    {
-        float yAngle = Mathf.LerpAngle(tr.eulerAngles.y, target.eulerAngles.y, 1);
-        float xAngle = Mathf.LerpAngle(tr.eulerAngles.x, target.eulerAngles.x, 1);
-        Quaternion rot = Quaternion.Euler(xAngle, yAngle, 0);
-        tr.position = target.position - (rot * Vector3.forward * dist) + (rot * Vector3.up * height);
-        tr.LookAt(target);
+        CamSet.position = target.position - (rot * Vector3.forward * dist) + (rot * Vector3.up * height);
+        CamSet.LookAt(target);
     }
 
 }
