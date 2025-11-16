@@ -3,17 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
+
 public class PlayerInput : MonoBehaviour
 {
     ItemManager itemManager;
     GameManager gameManager;
     Animator animator;
+    public GameObject Laser;
+
 
     public static bool KeyF = false;
     public static bool MouseL = false;
     public static bool MouseR = false;
-    public Rig rig;
-    public static bool Hand_Rifle = false;
+    public Rig AimRig;
+    
+
+
+    public Rig GunHold;
+    public Rig GunCarry;
+
+    public static bool Rifle_LowReady = false;
+    public static bool Rifle_FireReady = false;
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -43,29 +53,35 @@ public class PlayerInput : MonoBehaviour
         }
         else MouseR = false;
 
-
-
-
-        if(Input.GetKeyDown(KeyCode.R) && Hand_Rifle == true)
+        if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            animator.SetTrigger("Reload");
+            Rifle_LowReady = !Rifle_LowReady;
+
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Rifle_LowReady == false)
         {
-            Hand_Rifle = !Hand_Rifle;
-        }
-        if (Hand_Rifle == true)
-        {
-            animator.SetBool("onRifle", true);
-            if (Input.GetMouseButton(0)) { animator.SetTrigger("Fire");}
-            rig.weight = 1;
+            GunCarry.weight -= Time.deltaTime / 0.3f; ;
+            GunHold.weight -= Time.deltaTime / 0.3f; ;
         }
         else
         {
-            animator.SetBool("onRifle", false);
+            GunCarry.weight += Time.deltaTime / 0.3f; ;
+            GunHold.weight += Time.deltaTime / 0.3f; ;
+        }
 
-            rig.weight = 0;
+
+        if (Input.GetMouseButton(1) && Rifle_LowReady == true)
+        {
+            Laser.SetActive(true);
+            Rifle_FireReady = true;
+            AimRig.weight += Time.deltaTime / 0.3f;
+        }
+        else
+        {
+            Laser.SetActive(false);
+            Rifle_FireReady = false;
+            AimRig.weight -= Time.deltaTime / 0.3f;
         }
     }
 }

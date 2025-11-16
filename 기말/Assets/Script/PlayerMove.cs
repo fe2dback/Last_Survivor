@@ -13,8 +13,8 @@ public class PlayerMove : MonoBehaviour
     CharacterController CC;
     Animator animator;
     float gravity = 0.1f;
-
-
+    [Tooltip("감도설정")]
+    public float RotSpeed = 100f; 
     float speed = 3f;
     float default_speed_front = 3f;
     float default_speed_backward = 2f;
@@ -41,10 +41,9 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
 
-        Debug.Log(CC.isGrounded);
         playerInput();
-
-        //Debug.Log(CC.velocity.magnitude);
+        
+        Debug.Log(CC.velocity.magnitude);
     }
 
 
@@ -65,10 +64,8 @@ public class PlayerMove : MonoBehaviour
     {
         moveHV(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         Sit(Input.GetKey(KeyCode.C));
-        transform.Rotate(0, Input.GetAxis("Mouse X"), 0);
+        rotate();
     }
-
-
 
     void moveHV(float Ix, float Iz) // 플레이어의 이동 처리
     {
@@ -78,7 +75,7 @@ public class PlayerMove : MonoBehaviour
         {
             inputDirection.Normalize(); // 벡터의 크기를 1로 만듭니다.
         }
-
+        
         // 3. 플레이어의 방향에 맞춰 로컬 방향 벡터를 월드 방향 벡터로 변환
         Vector3 worldMoveDirection = transform.TransformDirection(inputDirection);
 
@@ -91,76 +88,44 @@ public class PlayerMove : MonoBehaviour
         if (CC.velocity.magnitude != 0)
         {
             animator.SetBool("isMove", true);
+            animator.SetFloat("zDir", Iz, 0.25f, Time.deltaTime);
+            animator.SetFloat("xDir", Ix, 0.25f, Time.deltaTime);
+
         }
         else
         {
             animator.SetBool("isMove", false);
         }
-        animator.SetFloat("zDir", Iz);
-        animator.SetFloat("xDir", Ix);
 
+        
 
 
         if (Iz > 0) // 앞으로 움직일때
         {
-            //animator.SetBool("isWalk", true);
 
             if (Input.GetKey(KeyCode.LeftShift)) //달릴때
             {
-                animator.SetFloat("zDir", 2);
-                //animator.SetBool("isRun", true);
+                animator.SetFloat("zDir", 2, 0.25f, Time.deltaTime);
+
                 speed = sprint;
             }
             else
             {
-                animator.SetFloat("zDir", 1);
-                //animator.SetBool("isRun", false);
                 if (speed > default_speed_front)
                 {
-                    //StartCoroutine(DecreaseSpeed(speed, default_speed_front, 0.2f));
+                    StartCoroutine(DecreaseSpeed(speed, default_speed_front, 0.2f));
                 }
             }
 
-
-            if (Ix > 0)
-            {
-                //animator.SetBool("isForwardRight", true);
-            }
-            else if (Ix < 0)
-            {
-                //animator.SetBool("isForwardLeft", true);
-            }
-            else
-            {
-                //animator.SetBool("isForwardRight", false);
-                //animator.SetBool("isForwardLeft", false);
-            }
         }
         else if (Iz < 0) //뒤로 갈때
         {
             speed = default_speed_backward;
-            //animator.SetBool("isRun", false);
-            //animator.SetBool("isBack", true);
-
-            if (Ix > 0)
-            {
-                //animator.SetBool("isBackwardRight", true);
-            }
-            else if (Ix < 0)
-            {
-                //animator.SetBool("isBackwardLeft", true);
-            }
-            else
-            {
-                //animator.SetBool("isBackwardRight", false);
-                //animator.SetBool("isBackwardLeft", false);
-            }
 
         }
         else // Iz가 0일 때
         {
-            //animator.SetBool("isWalk", false);
-            //animator.SetBool("isBack", false);
+
             if (Ix != 0 && speed > default_speed_front)
             {
                 StartCoroutine(DecreaseSpeed(speed, default_speed_front, 0.2f));
@@ -170,36 +135,16 @@ public class PlayerMove : MonoBehaviour
                 speed = default_speed_front;
             }
         }
-        //우
-        if (Ix > 0 && Iz == 0)
-        {
-            //animator.SetBool("isRight", true);
-        }
-        //좌
-        else if (Ix < 0 && Iz == 0)
-        {
-            //animator.SetBool("isLeft", true);
-        }
-        else
-        {
-            //animator.SetBool("isRight", false);
-            //animator.SetBool("isLeft", false);
-        }
-
-        if (Ix == 0 && Iz == 0)
-        {
-            //animator.SetBool("isWalk", false);
-            //animator.SetBool("isRun", false);
-            //animator.SetBool("isBack", false);
-            //animator.SetBool("isRight", false);
-            //animator.SetBool("isLeft", false);
-            //animator.SetBool("isFowardRight", false);
-            //animator.SetBool("isFowardLeft", false);
-            //animator.SetBool("isBackwardRight", false);
-            //animator.SetBool("isBackwardLeft", false);
-        }
 
 
+
+    }
+
+    void rotate()
+    {
+        
+        float mouseX = Input.GetAxis("Mouse X") * RotSpeed * Time.deltaTime;
+        transform.Rotate(0,mouseX,0);
     }
 
 

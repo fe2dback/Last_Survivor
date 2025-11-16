@@ -17,8 +17,9 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && PlayerInput.Rifle_FireReady == true)
         {
+            
             if (Time.time > prevT + 0.2f)
             {
                 audio.Play();
@@ -26,9 +27,6 @@ public class Gun : MonoBehaviour
                 Destroy(B, 3f);
                 prevT = Time.time;
             }
-            
-
-
             
         }
     }

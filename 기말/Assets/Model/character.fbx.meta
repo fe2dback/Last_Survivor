@@ -3,7 +3,12 @@ guid: a4b24db691350f54b9a01be82b6e20e6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Alpha_Body_MAT
+    second: {fileID: -4565884009001823619, guid: 51cc599a598b74e47b400a29d2a45bdc, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -17,10 +22,7 @@ ModelImporter:
     removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: "Avatar Rig Configuration mis-match. Bone length in configuration
-      does not match position in animation file:\n\t'mixamorig:LeftUpLeg' : position
-      error = 176.281693 mm\n\t'mixamorig:RightUpLeg' : position error = 176.304077
-      mm\n"
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
