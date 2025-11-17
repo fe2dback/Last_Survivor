@@ -41,7 +41,7 @@ public class PlayerRay : MonoBehaviour
 
                 objects = hitObject.collider.gameObject; //충돌한 오브젝트의 게임오브젝트를 담음
                 objects_ = objects.GetComponent<Rigidbody>(); // 충돌한 오브젝트의 RB를 받음
-                if (hitObject.collider.gameObject.tag == "box" && PlayerInput.MouseL)
+                if (hitObject.collider.gameObject.tag == "box" && Input.GetMouseButton(0))
                 {
 
                     objects.transform.position = getRay.position + getRay.forward * 3; // 충돌한 오브젝트의 위치를 보는방향 앞으로 이동함 #현재는 바로이동하지만 천천히 이동시키려면 translate 사용? or lerp
@@ -88,19 +88,19 @@ public class PlayerRay : MonoBehaviour
 
         if (RayNum == 1)
         {
-            Debug.DrawRay(transform.position, transform.forward * 1, Color.red);
+            Debug.DrawRay(getRay.position, transform.forward * 1, Color.red);
         }
         else if (RayNum == 2)
         {
-            Debug.DrawRay(transform.position, transform.forward * 2, Color.green);
+            Debug.DrawRay(getRay.position, transform.forward * 2, Color.green);
         }
         else if (RayNum == 3)
         {
-            Debug.DrawRay(transform.position, transform.forward * 4, Color.yellow);
+            Debug.DrawRay(getRay.position, transform.forward * 4, Color.yellow);
         }
         else if (RayNum == 4)
         {
-            Debug.DrawRay(transform.position, transform.forward * 8, Color.blue);
+            Debug.DrawRay(getRay.position, transform.forward * 8, Color.blue);
         }
     }
 

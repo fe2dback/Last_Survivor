@@ -6,6 +6,8 @@ public class Gun : MonoBehaviour
 {
     public GameObject Bullet;
     public Transform FirePos;
+
+    int RifleAmmo = 30;
     float prevT;
     AudioSource audio;
     // Start is called before the first frame update
@@ -29,6 +31,7 @@ public class Gun : MonoBehaviour
             }
             
         }
+
     }
 
 }

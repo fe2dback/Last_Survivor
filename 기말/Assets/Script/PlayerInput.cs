@@ -39,7 +39,7 @@ public class PlayerInput : MonoBehaviour
         else KeyF = false;
 
 
-        if (Input.GetMouseButtonDown(0)) //ÁÂÅ¬¸¯
+        if (Input.GetMouseButton(0)) //ÁÂÅ¬¸¯
         {
             
             MouseL = true;
@@ -82,6 +82,11 @@ public class PlayerInput : MonoBehaviour
             Laser.SetActive(false);
             Rifle_FireReady = false;
             AimRig.weight -= Time.deltaTime / 0.3f;
+        }
+
+        if(Input.GetKeyDown(KeyCode.R) && Rifle_FireReady == true)
+        {
+            animator.SetTrigger("Reload");
         }
     }
 }

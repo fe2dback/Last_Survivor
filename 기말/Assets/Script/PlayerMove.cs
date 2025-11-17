@@ -41,10 +41,11 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
 
+
         playerInput();
-        
-        Debug.Log(CC.velocity.magnitude);
+        //Debug.Log(CC.velocity.magnitude);
     }
+
 
 
     IEnumerator DecreaseSpeed(float start, float end, float duration) // speed 감소 코루틴

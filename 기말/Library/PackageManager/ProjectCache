@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638985274488029715
-    m_Hash: 1276044930
+      ticks: 638989460000392490
+    m_Hash: 2350622383
   m_LockFileStatus:
     m_FilePath: "C:/GitDesktop/test/\uAE30\uB9D0/Packages/packages-lock.json"
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638985275015474242
-    m_Hash: 2212510993
+      ticks: 638989460000438566
+    m_Hash: 131610485
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -1038,7 +1038,6 @@ m_ResolvedPackages:
     - 1.14.1
     - 1.14.2
     - 1.15.0
-    - 1.16.0
     compatible:
     - 1.7.0
     - 1.8.0-pre.1
@@ -1058,7 +1057,6 @@ m_ResolvedPackages:
     - 1.14.1
     - 1.14.2
     - 1.15.0
-    - 1.16.0
     recommended: 1.7.0
     deprecated: []
   dependencies:
