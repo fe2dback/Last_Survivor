@@ -188,7 +188,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34edf8934331f33479df9485c33ab81b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyController: {fileID: 0}
 --- !u!1 &104210434
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,12 +388,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f118760d7112e4a4dadcc3562c419656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 0}
-  player: {fileID: 0}
-  player_body: {fileID: 0}
-  destination: {x: 0, y: 0, z: 0}
-  findlogic: 1
-  readyfire: 0
 --- !u!65 &201824127
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1981,10 +1974,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6609a46deb6d9f94a833d908933dcd47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1861016021}
-  aim: {fileID: 1861016021}
+  Target: {fileID: 1861016021}
+  AimTarget: {fileID: 1861016021}
   dist: 2
-  height: 0
+  aimSpeed: 3
 --- !u!1 &1009060024 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7725752352602906440, guid: be3ed9816d019ff4a85901f7a3aae376, type: 3}
@@ -2520,10 +2513,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d1c0339c485bd48bb4d3dee9c751ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePos: {fileID: 695847064}
-  Bullet: {fileID: 3891068812991394489, guid: b2accfbcf45214748ae98abcc6abca77, type: 3}
-  enemyController: {fileID: 0}
-  time: 0
 --- !u!65 &1548035993
 BoxCollider:
   m_ObjectHideFlags: 0

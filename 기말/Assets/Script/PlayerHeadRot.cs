@@ -7,8 +7,6 @@ public class PlayerHeadRot : MonoBehaviour
     float maxXAngle = 89f;
     float minXAngle = -22f;
 
-    float maxXAngle_F = 89f;
-    float minXAngle_F = -89f;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,15 +31,9 @@ public class PlayerHeadRot : MonoBehaviour
         }
         float newX = currentX + mouseDeltaY;
         //Debug.Log(newX);
-        if (CamMove.FPSviewMode == true)
-        {
-            
-            newX = Mathf.Clamp(newX, minXAngle_F, maxXAngle_F);
-        }
-        else if(CamMove.FPSviewMode == false)
-        {
-            newX = Mathf.Clamp(newX, minXAngle, maxXAngle);
-        }
+        
+        newX = Mathf.Clamp(newX, minXAngle, maxXAngle);
+        
        
         transform.localRotation = Quaternion.Euler(newX, transform.localEulerAngles.y, 0);
         //Debug.Log(Input.GetAxis("Mouse Y"));

@@ -12,7 +12,7 @@ public class PlayerMove : MonoBehaviour
 {
     CharacterController CC;
     Animator animator;
-    float gravity = 0.1f;
+    float gravity = 0.3f;
     [Tooltip("감도설정")]
     public float RotSpeed = 100f; 
     float speed = 3f;
@@ -20,7 +20,7 @@ public class PlayerMove : MonoBehaviour
     float default_speed_backward = 2f;
     float sprint = 6f;
     float sitSpeed = 0.5f;
-    float JumpPower = 5f;
+    float JumpPower = 4f;
 
     float yAxis = 0f;
 
@@ -86,7 +86,7 @@ public class PlayerMove : MonoBehaviour
 
 
 
-        if (CC.velocity.magnitude != 0)
+        if (Ix != 0 || Iz != 0)
         {
             animator.SetBool("isMove", true);
             animator.SetFloat("zDir", Iz, 0.25f, Time.deltaTime);

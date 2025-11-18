@@ -388,9 +388,11 @@
 "Assets/Script/PlayerInput.cs"
 "Assets/Script/PlayerMove.cs"
 "Assets/Script/PlayerRay.cs"
+"Assets/Script/PlayerStates.cs"
 "Assets/testCode/DetectionAreaTrigger_.cs"
 "Assets/testCode/EnemyController_.cs"
 "Assets/testCode/EnemyGun_.cs"
+"Assets/testCode/Setbox.cs"
 -langversion:9.0
 /deterministic
 /optimize+

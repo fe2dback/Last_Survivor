@@ -45,7 +45,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
+    static IEnumerator DecreaseSpeed(float start, float end, float duration) //감소 코루틴
+    {
+        float timer = 0f;
+        while (timer < duration)
+        {
+            float currentValue = Mathf.Lerp(start, end, timer / duration);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+    }
 
 
 }
