@@ -44,6 +44,7 @@ public class PlayerStates : MonoBehaviour
 
     void Bleeding(int damage, int bleedingdamge, int term) 
     {
+        
 
     }
 
