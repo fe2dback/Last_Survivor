@@ -45,14 +45,6 @@ public class PlayerStates : MonoBehaviour
     void Bleeding(int damage, int bleedingdamge, int term) 
     {
 
-        if(damage == 1)
-        {
-            Debug.Log("1");
-        }
-        for (int i = 0; i < 5; i++)
-        {
-            Debug.Log("test2");
-        }
     }
 
 
