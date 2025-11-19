@@ -44,12 +44,11 @@ public class PlayerStates : MonoBehaviour
 
     void Bleeding(int damage, int bleedingdamge, int term) 
     {
-        //테스트 코드
-        for (int i = 0; i < 5; i++)
+
+        if(damage == 1)
         {
-            Debug.Log("test");
+            Debug.Log("1");
         }
-        //테스트 코드 2
         for (int i = 0; i < 5; i++)
         {
             Debug.Log("test2");
