@@ -44,21 +44,6 @@ public class PlayerStates : MonoBehaviour
 
     void Bleeding(int damage, int bleedingdamge, int term) 
     {
-        //테스트 코
-        if(damage == 1)
-        {
-            Debug.Log("1");
-        }
-
-        asfa
-          S
-          asda
-            sdas
-            da
-            sda
-            da
-            sda
-            s
 
     }
 
