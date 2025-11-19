@@ -41,28 +41,10 @@ public class PlayerStates : MonoBehaviour
     }
     
 
-    private void OnCollisionEnter(Collision collision, int damage)
+
+    void Bleeding(int damage, int bleedingdamge, int term) 
     {
-        if(collision.gameObject.CompareTag("EnemyBullet"))
-        {
-            Hit(damage);
-        }
-    }
-
-    void Bleeding(int damage, int bleedingdamge, int term) //������������ ��������, ���ӽð�
-    {
-        if (Input.GetMouseButton(0) && PlayerInput.Rifle_FireReady == true)
-        {
-
-            if (Time.time > term + 0.2f)
-            {
-                GetComponent<AudioSource>().Play();
-                GameObject B = Instantiate(Bullet, FirePos.position, FirePos.rotation);
-                Destroy(B, 3f);
-                prevT = Time.time;
-            }
-
-        }
+        
 
     }
 

@@ -389,6 +389,7 @@
 "Assets/Script/PlayerMove.cs"
 "Assets/Script/PlayerRay.cs"
 "Assets/Script/PlayerStates.cs"
+"Assets/testcode.cs"
 "Assets/testCode/DetectionAreaTrigger_.cs"
 "Assets/testCode/EnemyController_.cs"
 "Assets/testCode/EnemyGun_.cs"
