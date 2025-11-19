@@ -63,7 +63,11 @@ public class PlayerStates : MonoBehaviour
             }
 
         }
-
+        //테스트 코드 2
+        for (int i = 0; i < 5; i++)
+        {
+            Debug.Log("test2");
+        }
     }
 
 
