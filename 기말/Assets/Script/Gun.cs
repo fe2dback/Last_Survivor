@@ -6,9 +6,10 @@ public class Gun : MonoBehaviour
 {
     public GameObject Bullet;
     public Transform FirePos;
+    public GameObject FireEffect;
 
     int RifleAmmo = 30;
-    float prevT;
+    float BeforeTime;
     public AudioSource Fire;
     public AudioSource Reload;
     public AudioSource NoAmmo;
@@ -21,18 +22,24 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(RifleAmmo);
+        
         if (Input.GetMouseButton(0) && PlayerInput.Rifle_FireReady == true  && PlayerInput.isReload == false)
         {
             if (RifleAmmo >= 1)
             {
-                if (Time.time > prevT + 0.2f)
+                if (Time.time > BeforeTime + 0.2f)
                 {
-                    Fire.Play();
-                    GameObject B = Instantiate(Bullet, FirePos.position, FirePos.rotation);
                     RifleAmmo -= 1;
+                    Debug.Log(RifleAmmo);
+                    
+                    StartCoroutine(ff());
+                    Fire.Play();
+                    
+                    GameObject B = Instantiate(Bullet, FirePos.position, FirePos.rotation);
                     Destroy(B, 3f);
-                    prevT = Time.time;
+
+
+                    BeforeTime = Time.time;
                 }
             }
             else if(NoAmmo.isPlaying == false) 
@@ -48,6 +55,13 @@ public class Gun : MonoBehaviour
             RifleAmmo = 30;
         }
 
+    }
+
+    IEnumerator ff()
+    {
+        FireEffect.SetActive(true);
+        yield return new WaitForSeconds(0.15f);
+        FireEffect.SetActive(false);
     }
 
 }

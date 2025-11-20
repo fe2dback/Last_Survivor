@@ -33,7 +33,6 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(isReload);
         AimRifle();
         OnRifle();
         ReLoad();

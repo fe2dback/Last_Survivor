@@ -18,4 +18,10 @@ public class Bullet : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(transform.gameObject);
+        
+    }
 }

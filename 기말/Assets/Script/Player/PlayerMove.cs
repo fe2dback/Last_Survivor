@@ -12,6 +12,10 @@ public class PlayerMove : MonoBehaviour
 {
     CharacterController CC;
     Animator animator;
+    
+    public AudioSource Walk;//
+    public AudioSource Run; // -> 배열로 담을것
+
     float gravity = 0.3f;
     [Tooltip("감도설정")]
     public float RotSpeed = 100f; 
@@ -26,6 +30,9 @@ public class PlayerMove : MonoBehaviour
 
     float rot;
 
+    bool ismove = false; //
+    bool isrun = false;  // -> 움직임 사운드 변경
+
     Vector3 sumVector, xVector, yVector, zVector;
 
 
@@ -34,6 +41,7 @@ public class PlayerMove : MonoBehaviour
     {
         CC = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+
 
     }
 
@@ -61,12 +69,15 @@ public class PlayerMove : MonoBehaviour
     }
 
 
+
     void playerInput() //플레이어의 마우스, 키보드 입력을 받는 함수
     {
         moveHV(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         Sit(Input.GetKey(KeyCode.C));
         rotate();
     }
+
+    
 
     void moveHV(float Ix, float Iz) // 플레이어의 이동 처리
     {
@@ -91,14 +102,15 @@ public class PlayerMove : MonoBehaviour
             animator.SetBool("isMove", true);
             animator.SetFloat("zDir", Iz, 0.25f, Time.deltaTime);
             animator.SetFloat("xDir", Ix, 0.25f, Time.deltaTime);
-
+            ismove = true;
+            //대각선도 달리는게 나은듯 수정필요
+            
         }
         else
         {
             animator.SetBool("isMove", false);
+            ismove = false;
         }
-
-        
 
 
         if (Iz > 0) // 앞으로 움직일때
@@ -107,8 +119,10 @@ public class PlayerMove : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftShift)) //달릴때
             {
                 animator.SetFloat("zDir", 2, 0.25f, Time.deltaTime);
-
+                
                 speed = sprint;
+
+                isrun = true;
             }
             else
             {
@@ -116,13 +130,14 @@ public class PlayerMove : MonoBehaviour
                 {
                     StartCoroutine(DecreaseSpeed(speed, default_speed_front, 0.2f));
                 }
+
+                isrun = false;
             }
 
         }
         else if (Iz < 0) //뒤로 갈때
         {
             speed = default_speed_backward;
-
         }
         else // Iz가 0일 때
         {
@@ -138,12 +153,36 @@ public class PlayerMove : MonoBehaviour
         }
 
 
+        //플레이어 움직임 사운드
+        if (ismove && !isrun)
+        {
+            if (!Walk.isPlaying)
+            {
+                Walk.Play();
+            }
+        }
+        else
+        {
+            Walk.Stop();
+        }
 
+
+        if (isrun)
+        {         
+            if (!Run.isPlaying)
+            {
+                Run.Play();
+            }
+        }
+        else
+        {
+            Run.Stop();
+        }
     }
 
+    //플레이어 회전
     void rotate()
     {
-        
         float mouseX = Input.GetAxis("Mouse X") * RotSpeed * Time.deltaTime;
         transform.Rotate(0,mouseX,0);
     }
