@@ -35,7 +35,7 @@ public class Gun : MonoBehaviour
                     prevT = Time.time;
                 }
             }
-            else
+            else if(NoAmmo.isPlaying == false) 
             {
                 NoAmmo.Play();
             }
@@ -45,7 +45,6 @@ public class Gun : MonoBehaviour
 
         if (PlayerInput.isReload == true)
         {
-            Reload.Play();
             RifleAmmo = 30;
         }
 

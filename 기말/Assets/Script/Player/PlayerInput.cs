@@ -9,8 +9,10 @@ public class PlayerInput : MonoBehaviour
     ItemManager itemManager;
     GameManager gameManager;
     Animator animator;
-    public GameObject Laser;
+    
 
+    public GameObject Laser;
+    public GameObject Gun;
 
    
     public Rig AimRig;
@@ -26,7 +28,7 @@ public class PlayerInput : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-
+        
     }
 
     void Update()
@@ -80,17 +82,18 @@ public class PlayerInput : MonoBehaviour
         {
             isReload = true;
             LeftHand.weight = 0.5f;
-            StartCoroutine(OnReLoad());
-            animator.SetTrigger("Reload");
 
+            
+            animator.SetTrigger("Reload");
+            StartCoroutine(OnReLoad());
         }
     }
 
     IEnumerator OnReLoad()
     {
+        Gun.GetComponent<Gun>().Reload.Play();
         yield return new WaitForSeconds(ReloadTime);
-        isReload = false;
-        
+        isReload = false;   
         LeftHand.weight = 1;
     }
 }
