@@ -38,7 +38,7 @@ public class PlayerMove : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 
 

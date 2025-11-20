@@ -12,17 +12,16 @@ public class PlayerInput : MonoBehaviour
     public GameObject Laser;
 
 
-    public static bool KeyF = false;
-    public static bool MouseL = false;
-    public static bool MouseR = false;
+   
     public Rig AimRig;
-    
+    public Rig Hand;
+    public Rig WeaponPose;
+    public TwoBoneIKConstraint LeftHand;
 
 
-    public Rig GunHold;
-    public Rig GunCarry;
-
-    public static bool Rifle_LowReady = false;
+    public static bool isReload = false;
+    float ReloadTime = 3f;
+    bool Rifle_LowReady = false;
     public static bool Rifle_FireReady = false;
     private void Start()
     {
@@ -32,45 +31,16 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F)) //상호작용키 F
-        {
-            KeyF = true;
-        }
-        else KeyF = false;
+        Debug.Log(isReload);
+        AimRifle();
+        OnRifle();
+        ReLoad();
+
+    }
 
 
-        if (Input.GetMouseButton(0)) //좌클릭
-        {
-            
-            MouseL = true;
-        }
-        else MouseL = false;
-
-        if(Input.GetMouseButtonDown(1)) //우클릭
-        {
-            
-            MouseR = true;
-        }
-        else MouseR = false;
-
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            Rifle_LowReady = !Rifle_LowReady;
-
-        }
-
-        if (Rifle_LowReady == false)
-        {
-            GunCarry.weight -= Time.deltaTime / 0.3f; ;
-            GunHold.weight -= Time.deltaTime / 0.3f; ;
-        }
-        else
-        {
-            GunCarry.weight += Time.deltaTime / 0.3f; ;
-            GunHold.weight += Time.deltaTime / 0.3f; ;
-        }
-
-
+    void AimRifle()
+    {
         if (Input.GetMouseButton(1) && Rifle_LowReady == true)
         {
             Laser.SetActive(true);
@@ -83,10 +53,44 @@ public class PlayerInput : MonoBehaviour
             Rifle_FireReady = false;
             AimRig.weight -= Time.deltaTime / 0.3f;
         }
-
-        if(Input.GetKeyDown(KeyCode.R) && Rifle_FireReady == true)
+    }
+    void OnRifle()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            animator.SetTrigger("Reload");
+            Rifle_LowReady = !Rifle_LowReady;
+
         }
+
+        if (Rifle_LowReady == true)
+        {
+            WeaponPose.weight += Time.deltaTime / 0.3f; 
+            Hand.weight += Time.deltaTime / 0.3f; 
+        }
+        else
+        {
+            WeaponPose.weight -= Time.deltaTime / 0.3f; 
+            Hand.weight -= Time.deltaTime / 0.3f; 
+        }
+    }
+
+    void ReLoad()
+    {
+        if (Input.GetKeyDown(KeyCode.R) && Rifle_LowReady== true && isReload ==false)
+        {
+            isReload = true;
+            LeftHand.weight = 0.5f;
+            StartCoroutine(OnReLoad());
+            animator.SetTrigger("Reload");
+
+        }
+    }
+
+    IEnumerator OnReLoad()
+    {
+        yield return new WaitForSeconds(ReloadTime);
+        isReload = false;
+        
+        LeftHand.weight = 1;
     }
 }

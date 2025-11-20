@@ -69,7 +69,7 @@ public class PlayerRay : MonoBehaviour
 
 
             // æ∆¿Ã≈€ »πµÊ
-            if (hitObject.collider.gameObject.tag == "item" && PlayerInput.KeyF)
+            if (hitObject.collider.gameObject.tag == "item" && Input.GetKeyDown(KeyCode.F))
             {
                 string itemTag = "";
                 itemTag = hitObject.collider.gameObject.name;
