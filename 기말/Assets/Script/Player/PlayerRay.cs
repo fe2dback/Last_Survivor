@@ -77,6 +77,12 @@ public class PlayerRay : MonoBehaviour
                 Destroy(objects);
             }
 
+            if(hitObject.collider.gameObject.tag == "gun" && Input.GetKeyDown(KeyCode.F))
+            {
+                ItemManager.HasGun = true;
+                Destroy(objects);
+            }
+
         }
     }
 
@@ -86,7 +92,7 @@ public class PlayerRay : MonoBehaviour
         
 
 
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             RayNum = 1;
         }

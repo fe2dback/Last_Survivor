@@ -45,13 +45,15 @@ public class PlayerMove : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-
-
         playerInput();
         //Debug.Log(CC.velocity.magnitude);
+    }
+
+    private void Update()
+    {
+        rotate();
     }
 
 
@@ -74,7 +76,6 @@ public class PlayerMove : MonoBehaviour
     {
         moveHV(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         Sit(Input.GetKey(KeyCode.C));
-        rotate();
     }
 
     
@@ -102,20 +103,28 @@ public class PlayerMove : MonoBehaviour
             animator.SetBool("isMove", true);
             animator.SetFloat("zDir", Iz, 0.25f, Time.deltaTime);
             animator.SetFloat("xDir", Ix, 0.25f, Time.deltaTime);
-            ismove = true;
-            //대각선도 달리는게 나은듯 수정필요
             
+            if(Ix != 0 && Iz != 0)
+            {
+                ismove = false; 
+                isrun = true;
+            }
+            else
+            {
+                ismove = true;
+                isrun = false;
+            }
         }
         else
         {
             animator.SetBool("isMove", false);
+            isrun = false;
             ismove = false;
         }
 
-
         if (Iz > 0) // 앞으로 움직일때
         {
-
+            speed = default_speed_front;
             if (Input.GetKey(KeyCode.LeftShift)) //달릴때
             {
                 animator.SetFloat("zDir", 2, 0.25f, Time.deltaTime);
@@ -126,12 +135,11 @@ public class PlayerMove : MonoBehaviour
             }
             else
             {
-                if (speed > default_speed_front)
+                if (speed > default_speed_front) // 뛰지않았는데 현재속도가 기본속도보다 크면 줄여줌
                 {
                     StartCoroutine(DecreaseSpeed(speed, default_speed_front, 0.2f));
                 }
 
-                isrun = false;
             }
 
         }
@@ -145,10 +153,6 @@ public class PlayerMove : MonoBehaviour
             if (Ix != 0 && speed > default_speed_front)
             {
                 StartCoroutine(DecreaseSpeed(speed, default_speed_front, 0.2f));
-            }
-            else if (Ix == 0)
-            {
-                speed = default_speed_front;
             }
         }
 

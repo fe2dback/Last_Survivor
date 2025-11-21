@@ -10,9 +10,9 @@ public class Gun : MonoBehaviour
 
     int RifleAmmo = 30;
     float BeforeTime;
-    public AudioSource Fire;
-    public AudioSource Reload;
-    public AudioSource NoAmmo;
+    public AudioSource Fire_A;
+    public AudioSource Reload_A;
+    public AudioSource NoAmmo_A;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +23,7 @@ public class Gun : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetMouseButton(0) && PlayerInput.Rifle_FireReady == true  && PlayerInput.isReload == false)
+        if (Input.GetMouseButton(0) && PlayerInput.Rifle_FireReady == true && PlayerInput.isReload == false)
         {
             if (RifleAmmo >= 1)
             {
@@ -32,8 +32,8 @@ public class Gun : MonoBehaviour
                     RifleAmmo -= 1;
                     Debug.Log(RifleAmmo);
                     
-                    StartCoroutine(ff());
-                    Fire.Play();
+                    StartCoroutine(MuzzleFlash());
+                    Fire_A.Play();
                     
                     GameObject B = Instantiate(Bullet, FirePos.position, FirePos.rotation);
                     Destroy(B, 3f);
@@ -42,22 +42,24 @@ public class Gun : MonoBehaviour
                     BeforeTime = Time.time;
                 }
             }
-            else if(NoAmmo.isPlaying == false) 
+            else if(NoAmmo_A.isPlaying == false) 
             {
-                NoAmmo.Play();
+                NoAmmo_A.Play();
             }
 
 
         }
-
-        if (PlayerInput.isReload == true)
-        {
-            RifleAmmo = 30;
-        }
+        
 
     }
 
-    IEnumerator ff()
+    public void Reload()
+    {
+        RifleAmmo = 30;
+    }
+
+
+    IEnumerator MuzzleFlash()
     {
         FireEffect.SetActive(true);
         yield return new WaitForSeconds(0.15f);

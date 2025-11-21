@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
+using UnityEngine.UIElements;
 
 
 public class PlayerInput : MonoBehaviour
 {
-    ItemManager itemManager;
-    GameManager gameManager;
-    Animator animator;
     
+    Animator animator;
 
     public GameObject Laser;
     public GameObject Gun;
+    public GameObject Knife;
 
    
     public Rig AimRig;
@@ -20,11 +20,18 @@ public class PlayerInput : MonoBehaviour
     public Rig WeaponPose;
     public TwoBoneIKConstraint LeftHand;
 
+    bool CansSwitch = true;
 
+
+    //라이플
     public static bool isReload = false;
-    float ReloadTime = 3f;
+    public static float ReloadTime = 3f;
     bool Rifle_LowReady = false;
     public static bool Rifle_FireReady = false;
+
+    //나이프
+    bool Knife_Ready = false;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -33,12 +40,70 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        AimRifle();
-        OnRifle();
-        ReLoad();
+
+
+        
+        
+        if (CansSwitch)
+        {
+            if (ItemManager.HasGun == true)
+            {
+                Gun.SetActive(true);
+                OnRifle();
+            }
+            KnifeAttack();
+        }
+        
+
+
+        if (Rifle_LowReady == true)
+        {
+            Knife_Ready = false;
+            Knife.SetActive(false);
+        }
+        else
+        {
+            Knife_Ready = true;
+            animator.SetTrigger("EndReload");
+            Gun.GetComponent<Gun>().Reload_A.Stop(); // 사운드정지
+            LeftHand.weight = 1; //왼손 다시빠꾸
+            Knife.SetActive(true);
+        }
+
 
     }
 
+
+
+
+
+
+
+
+
+    void KnifeAttack()
+    {
+        if(Knife_Ready)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                animator.SetInteger("Attack", 1);
+
+            }
+            else if (Input.GetMouseButtonDown(1))
+            {
+                animator.SetInteger("Attack", 2);
+            }
+            else
+            {
+                animator.SetInteger("Attack", 0);
+            }
+        }
+        
+    }
+
+    
+    
 
     void AimRifle()
     {
@@ -54,15 +119,17 @@ public class PlayerInput : MonoBehaviour
             Rifle_FireReady = false;
             AimRig.weight -= Time.deltaTime / 0.3f;
         }
+
     }
     void OnRifle()
     {
+        
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Rifle_LowReady = !Rifle_LowReady;
 
         }
-
+        
         if (Rifle_LowReady == true)
         {
             WeaponPose.weight += Time.deltaTime / 0.3f; 
@@ -73,26 +140,33 @@ public class PlayerInput : MonoBehaviour
             WeaponPose.weight -= Time.deltaTime / 0.3f; 
             Hand.weight -= Time.deltaTime / 0.3f; 
         }
+        AimRifle();
+        ReLoad();
     }
 
     void ReLoad()
     {
-        if (Input.GetKeyDown(KeyCode.R) && Rifle_LowReady== true && isReload ==false)
+        if (Input.GetKeyDown(KeyCode.R) && Rifle_LowReady == true && isReload == false)
         {
             isReload = true;
+            CansSwitch = false;
             LeftHand.weight = 0.5f;
-
-            
             animator.SetTrigger("Reload");
             StartCoroutine(OnReLoad());
+            
         }
     }
 
     IEnumerator OnReLoad()
-    {
-        Gun.GetComponent<Gun>().Reload.Play();
-        yield return new WaitForSeconds(ReloadTime);
-        isReload = false;   
+    {      
+        Gun.GetComponent<Gun>().Reload_A.Play();   
+        yield return new WaitForSeconds(ReloadTime);        
+        Gun.GetComponent<Gun>().Reload();
+        isReload = false;
+        CansSwitch = true;
         LeftHand.weight = 1;
+
+
     }
+
 }

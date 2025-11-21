@@ -6,7 +6,10 @@ public class ItemManager : MonoBehaviour
 {
     public static ItemManager itemManager;
     private Dictionary<string, int> item = new Dictionary<string, int>();
-    // Start is called before the first frame update
+
+
+    public static bool HasGun = false;
+
     private void Awake()
     {
         if (itemManager == null)
