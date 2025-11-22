@@ -7,7 +7,7 @@ public class EnemyHealth : MonoBehaviour
     Renderer enemyColor;
 
     private EnemyStats enemyStats;
-    private int currentHealth;
+    private int currentHealth; //현재 체력
 
     void Awake()
     {
@@ -40,12 +40,24 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        Bullet bullet = other.GetComponent<Bullet>();
+        if (bullet != null)
+        {
+            // 총알의 데미지 만큼 체력을 깎음
+            TakeDamate(bullet.damage);
+
+            // 총알은 충돌 후 제거
+            Destroy(other.gameObject);
+        }
+    }
+
     private void Die()
     {
         Debug.Log("적이 죽었습니다");
         enemyColor.material.color = Color.red;
         Destroy(gameObject, 2f);
 
-        
     }
 }
