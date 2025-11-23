@@ -6,7 +6,7 @@ using static UnityEditor.PlayerSettings;
 
 public class PlayerRay : MonoBehaviour
 {
-
+    Animator animator;
     RaycastHit hitObject;
     GameObject objects; //캐스팅된 오브젝트
     Rigidbody objects_;
@@ -17,7 +17,7 @@ public class PlayerRay : MonoBehaviour
 
     private void Start()
     {
-
+        animator = GetComponentInParent<Animator>();
     }
 
     void Update()
@@ -72,13 +72,15 @@ public class PlayerRay : MonoBehaviour
             {
                 string itemTag = "";
                 itemTag = hitObject.collider.gameObject.name;
+                animator.SetTrigger("isPick");
                 ItemManager.itemManager.getItem(itemTag, 1);
                 Destroy(objects);
             }
 
             if(hitObject.collider.gameObject.tag == "gun" && Input.GetKeyDown(KeyCode.F))
             {
-                ItemManager.Instance.HasGun = true;
+                animator.SetTrigger("isPick");
+                ItemManager.Instance.HasGun = true;    
                 Destroy(objects);
             }
 
