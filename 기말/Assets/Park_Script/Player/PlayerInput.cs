@@ -18,6 +18,7 @@ public class PlayerInput : MonoBehaviour
     public Rig AimRig;
     public Rig Hand;
     public Rig WeaponPose;
+    public Rig Head;
     public TwoBoneIKConstraint LeftHand;
 
 
@@ -41,14 +42,9 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.K))
-        {
-            GameManager.Instance.PlayerDead = !GameManager.Instance.PlayerDead;
-        }
-
         
         
-        if (CansSwitch)
+        if (CansSwitch && !GameManager.Instance.PlayerDead)
         {
             if (ItemManager.Instance.HasGun == true)
             {
@@ -56,6 +52,10 @@ public class PlayerInput : MonoBehaviour
                 OnRifle();
             }
             KnifeAttack();
+        }
+        else
+        {
+            Head.weight = 0;
         }
         
 

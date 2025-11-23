@@ -6,7 +6,6 @@ public class CamMove : MonoBehaviour
 {
     // Start is called before the first frame update
     public Transform Target;
-    public Transform AimTarget;
     public float dist;
     [Tooltip("조준속도")]
     public float aimSpeed = 3f;
@@ -22,7 +21,17 @@ public class CamMove : MonoBehaviour
 
     void LateUpdate()
     {
-        Observer();
+        if(!GameManager.Instance.PlayerDead)
+        {
+            Observer();
+        }
+        else
+        {
+            transform.position = Target.position + Target.up * 4f;
+            transform.rotation = Quaternion.identity;
+            transform.LookAt(Target);
+        }
+           
     }
 
 
@@ -47,7 +56,7 @@ public class CamMove : MonoBehaviour
             dist = Mathf.Clamp(dist, 1, 2);
         }
         transform.position = Target.position - (rot * Vector3.forward * dist);// + (rot * Vector3.up);
-        transform.LookAt(AimTarget);
+        transform.LookAt(Target);
     }
 
 }
