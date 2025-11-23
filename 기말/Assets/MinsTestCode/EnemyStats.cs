@@ -13,6 +13,7 @@ public class EnemyStats : MonoBehaviour
     //SerializeFiled : 인스펙터 창에 변수를 표시할 수 있게함
     [SerializeField] private int maxHealth;
 
+    public int CurrentEnemyLevel => enemyLevel;
     public int MaxHealth => maxHealth; //EnemyHealth에서 maxHealth를 가져갈 수 있게 프로퍼티
     public int ExpReward => enemyLevel * baseExp; //player가 적을 처치할 시 경험치 얻게 코딩해야함
 

@@ -382,6 +382,7 @@
 "Assets/MinsTestCode/EnemyHealth.cs"
 "Assets/MinsTestCode/EnemyStats.cs"
 "Assets/MinsTestCode/MelleEnemyAI.cs"
+"Assets/MinsTestCode/MelleEnemyAttackController.cs"
 "Assets/Script/Bullet.cs"
 "Assets/Script/CamMove.cs"
 "Assets/Script/GameManager.cs"
