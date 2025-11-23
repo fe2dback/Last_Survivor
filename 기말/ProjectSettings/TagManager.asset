@@ -9,6 +9,8 @@ TagManager:
   - EnemyBullet
   - box
   - item
+  - FxTemporaire
+  - gun
   layers:
   - Default
   - TransparentFX

@@ -8,18 +8,24 @@ public class PlayerHeadRot : MonoBehaviour
     float minXAngle = -22f;
 
     // Start is called before the first frame update
-    void Start()
+
+    void Update()
     {
-            
+        if (!GameManager.Instance.PlayerDead)
+        {
+            RotateX();
+        }
+
+        
     }
 
     // Update is called once per frame
-    void Update()
+    void RotateX()
     {
         float mouseDeltaY = -Input.GetAxis("Mouse Y"); //마우스가 위로가면 +(아래쪽)을 보게되니까 -(위쪽)을 보게함
         float currentX = transform.localEulerAngles.x;
         //Debug.Log(currentX);
-        
+
         if (currentX > 90f) //화면이 뒤로 뒤집히는거 방지
         {
             currentX -= 360f;
@@ -31,10 +37,10 @@ public class PlayerHeadRot : MonoBehaviour
         }
         float newX = currentX + mouseDeltaY;
         //Debug.Log(newX);
-        
+
         newX = Mathf.Clamp(newX, minXAngle, maxXAngle);
-        
-       
+
+
         transform.localRotation = Quaternion.Euler(newX, transform.localEulerAngles.y, 0);
         //Debug.Log(Input.GetAxis("Mouse Y"));
     }

@@ -6,7 +6,10 @@ public class ItemManager : MonoBehaviour
 {
     public static ItemManager itemManager;
     private Dictionary<string, int> item = new Dictionary<string, int>();
-    // Start is called before the first frame update
+
+
+    public bool HasGun = false;
+
     private void Awake()
     {
         if (itemManager == null)
@@ -20,9 +23,17 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
 
+    public static ItemManager Instance
+    {
+        get
+        {
+            if(itemManager == null)
+            {
+                return null;
+            }
+            return itemManager;
+        }
     }
 
     // Update is called once per frame

@@ -5,7 +5,11 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
+<<<<<<< HEAD
       ticks: 638991628885144179
+=======
+      ticks: 638994932164187150
+>>>>>>> Parksangjun
     m_Hash: 2350622383
   m_LockFileStatus:
     m_FilePath: "D:/Git/Last_Survivor/\uAE30\uB9D0/Packages/packages-lock.json"
@@ -13,7 +17,11 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
+<<<<<<< HEAD
       ticks: 638991628885144179
+=======
+      ticks: 638994932164197221
+>>>>>>> Parksangjun
     m_Hash: 131610485
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
