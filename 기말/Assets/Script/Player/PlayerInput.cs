@@ -20,6 +20,7 @@ public class PlayerInput : MonoBehaviour
     public Rig WeaponPose;
     public TwoBoneIKConstraint LeftHand;
 
+
     bool CansSwitch = true;
 
 
@@ -40,13 +41,16 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            GameManager.Instance.PlayerDead = !GameManager.Instance.PlayerDead;
+        }
 
         
         
         if (CansSwitch)
         {
-            if (ItemManager.HasGun == true)
+            if (ItemManager.Instance.HasGun == true)
             {
                 Gun.SetActive(true);
                 OnRifle();
@@ -87,7 +91,7 @@ public class PlayerInput : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                animator.SetInteger("Attack", 1);
+                animator.SetInteger("Attack", 1);         
 
             }
             else if (Input.GetMouseButtonDown(1))

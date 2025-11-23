@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     public int level { get; private set; } = 0;
 
+    public bool PlayerDead = false;
+
     private float leftTime = 30f;
 
     private void Awake()
@@ -19,11 +21,23 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("중복된 인스턴스");
+            
             Destroy(gameObject);
         }
     }
 
+
+    public static GameManager Instance
+    {
+        get
+        {
+            if(null == GM)
+            {
+                return null;
+            }
+            return GM;
+        }
+    }
 
     public void AddLevel()
     {

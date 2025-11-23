@@ -6,7 +6,6 @@ using static UnityEditor.PlayerSettings;
 
 public class PlayerRay : MonoBehaviour
 {
-    ItemManager itemManager;
 
     RaycastHit hitObject;
     GameObject objects; //캐스팅된 오브젝트
@@ -79,7 +78,7 @@ public class PlayerRay : MonoBehaviour
 
             if(hitObject.collider.gameObject.tag == "gun" && Input.GetKeyDown(KeyCode.F))
             {
-                ItemManager.HasGun = true;
+                ItemManager.Instance.HasGun = true;
                 Destroy(objects);
             }
 

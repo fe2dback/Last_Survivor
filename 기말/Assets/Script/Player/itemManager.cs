@@ -8,7 +8,7 @@ public class ItemManager : MonoBehaviour
     private Dictionary<string, int> item = new Dictionary<string, int>();
 
 
-    public static bool HasGun = false;
+    public bool HasGun = false;
 
     private void Awake()
     {
@@ -23,9 +23,17 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
 
+    public static ItemManager Instance
+    {
+        get
+        {
+            if(itemManager == null)
+            {
+                return null;
+            }
+            return itemManager;
+        }
     }
 
     // Update is called once per frame

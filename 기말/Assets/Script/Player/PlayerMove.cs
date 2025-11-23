@@ -30,6 +30,7 @@ public class PlayerMove : MonoBehaviour
 
     float rot;
 
+
     bool ismove = false; //
     bool isrun = false;  // -> 움직임 사운드 변경
 
@@ -45,15 +46,15 @@ public class PlayerMove : MonoBehaviour
 
     }
 
-    void FixedUpdate()
-    {
-        playerInput();
-        //Debug.Log(CC.velocity.magnitude);
-    }
-
     private void Update()
     {
-        rotate();
+        if(!GameManager.Instance.PlayerDead)
+        {
+            RotateY();
+            PlayerInput();          
+        }
+        Audio();
+        //Debug.Log(CC.velocity.magnitude);
     }
 
 
@@ -72,29 +73,58 @@ public class PlayerMove : MonoBehaviour
 
 
 
-    void playerInput() //플레이어의 마우스, 키보드 입력을 받는 함수
+    void PlayerInput() //플레이어의 마우스, 키보드 입력을 받는 함수
     {
         moveHV(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         Sit(Input.GetKey(KeyCode.C));
     }
 
-    
+    void Audio()
+    {
+        bool Dead = !GameManager.Instance.PlayerDead;
+        //플레이어 움직임 사운드
+        if (ismove && !isrun && Dead)
+        {
+            if (!Walk.isPlaying)
+            {
+                Walk.Play();
+            }
+        }
+        else
+        {
+            Walk.Stop();
+        }
+
+
+        if (isrun && Dead)
+        {
+            if (!Run.isPlaying)
+            {
+                Run.Play();
+            }
+        }
+        else
+        {
+            Run.Stop();
+        }
+
+    }
+
 
     void moveHV(float Ix, float Iz) // 플레이어의 이동 처리
     {
-        Vector3 inputDirection = new Vector3(Ix, 0f, Iz);
+        Vector3 InputDirection = new Vector3(Ix, 0f, Iz);
 
-        if (inputDirection.magnitude > 1f)
+        if (InputDirection.magnitude > 1f)
         {
-            inputDirection.Normalize(); // 벡터의 크기를 1로 만듭니다.
+            InputDirection.Normalize();
         }
-        
-        // 3. 플레이어의 방향에 맞춰 로컬 방향 벡터를 월드 방향 벡터로 변환
-        Vector3 worldMoveDirection = transform.TransformDirection(inputDirection);
+ 
+        Vector3 WorldMoveDirection = transform.TransformDirection(InputDirection);
 
-        Vector3 finalMoveVector = worldMoveDirection * speed * Time.deltaTime + Jump();
+        Vector3 FinalMoveVector = WorldMoveDirection * speed * Time.deltaTime + Jump();
 
-        CC.Move(finalMoveVector);
+        CC.Move(FinalMoveVector);
 
 
 
@@ -155,41 +185,16 @@ public class PlayerMove : MonoBehaviour
                 StartCoroutine(DecreaseSpeed(speed, default_speed_front, 0.2f));
             }
         }
-
-
-        //플레이어 움직임 사운드
-        if (ismove && !isrun)
-        {
-            if (!Walk.isPlaying)
-            {
-                Walk.Play();
-            }
-        }
-        else
-        {
-            Walk.Stop();
-        }
-
-
-        if (isrun)
-        {         
-            if (!Run.isPlaying)
-            {
-                Run.Play();
-            }
-        }
-        else
-        {
-            Run.Stop();
-        }
+       
     }
 
     //플레이어 회전
-    void rotate()
+    void RotateY()
     {
         float mouseX = Input.GetAxis("Mouse X") * RotSpeed * Time.deltaTime;
         transform.Rotate(0,mouseX,0);
     }
+
 
 
     void Sit(bool PressC)
