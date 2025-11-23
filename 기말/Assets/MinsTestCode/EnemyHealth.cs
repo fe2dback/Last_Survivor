@@ -14,7 +14,7 @@ public class EnemyHealth : MonoBehaviour
         enemyStats = GetComponent<EnemyStats>();
         if(enemyStats != null )
         {
-            //EnemyStats 15line에서 받아온 값
+            //EnemyStats 16line에서 받아온 값
             currentHealth = enemyStats.MaxHealth; //EnemyStats에서 계산된 MaxHealth로 초기화
         }
         else
