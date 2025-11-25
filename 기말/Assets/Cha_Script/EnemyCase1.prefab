@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5167674646970701128}
   - component: {fileID: 3972384737313350344}
   - component: {fileID: 5175062432588439354}
+  - component: {fileID: 534485908894884554}
   m_Layer: 0
   m_Name: EnemyCase1
   m_TagString: Untagged
@@ -201,3 +202,21 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &534485908894884554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5574291535105750770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98e38509ad8d544448986f16b27415ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  nvAgent: {fileID: 0}
+  attackRange: 1.5
+  attackCooldown: 2
+  attackDamage: 0
+  attackDelay: 0.5
