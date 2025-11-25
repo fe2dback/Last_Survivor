@@ -13,11 +13,13 @@ public class PlayerInput : MonoBehaviour
     public GameObject Laser;
     public GameObject Gun;
     public GameObject Knife;
+    public GameObject KnifeArea;
 
-   
+
     public Rig AimRig;
     public Rig Hand;
     public Rig WeaponPose;
+    public Rig Head;
     public TwoBoneIKConstraint LeftHand;
 
 
@@ -32,6 +34,7 @@ public class PlayerInput : MonoBehaviour
 
     //³ªÀÌÇÁ
     bool Knife_Ready = false;
+    public bool Knife_Attack = false;
 
     private void Start()
     {
@@ -41,14 +44,9 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.K))
-        {
-            GameManager.Instance.PlayerDead = !GameManager.Instance.PlayerDead;
-        }
-
         
         
-        if (CansSwitch)
+        if (CansSwitch && !GameManager.Instance.PlayerDead)
         {
             if (ItemManager.Instance.HasGun == true)
             {
@@ -56,6 +54,10 @@ public class PlayerInput : MonoBehaviour
                 OnRifle();
             }
             KnifeAttack();
+        }
+        else
+        {
+            Head.weight = 0;
         }
         
 
@@ -84,22 +86,36 @@ public class PlayerInput : MonoBehaviour
 
 
 
+    IEnumerator KnifeDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        KnifeArea.SetActive(true);
+        Knife_Attack = true;
+        yield return new WaitForSeconds(0.5f);
+        Knife_Attack = false;
+        KnifeArea.SetActive(false);
 
+    }
     void KnifeAttack()
     {
         if(Knife_Ready)
         {
             if (Input.GetMouseButtonDown(0))
             {
-                animator.SetInteger("Attack", 1);         
+                
+                animator.SetInteger("Attack", 1); 
+                StartCoroutine(KnifeDelay());
 
             }
             else if (Input.GetMouseButtonDown(1))
             {
+                
                 animator.SetInteger("Attack", 2);
+                StartCoroutine(KnifeDelay());
             }
             else
             {
+                
                 animator.SetInteger("Attack", 0);
             }
         }
@@ -111,7 +127,8 @@ public class PlayerInput : MonoBehaviour
 
     void AimRifle()
     {
-        if (Input.GetMouseButton(1) && Rifle_LowReady == true)
+        
+        if (Input.GetMouseButton(1) && Rifle_LowReady == true && !isReload)
         {
             Laser.SetActive(true);
             Rifle_FireReady = true;
@@ -153,7 +170,7 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) && Rifle_LowReady == true && isReload == false)
         {
             isReload = true;
-            CansSwitch = false;
+            //CansSwitch = false;
             LeftHand.weight = 0.5f;
             animator.SetTrigger("Reload");
             StartCoroutine(OnReLoad());
@@ -169,8 +186,6 @@ public class PlayerInput : MonoBehaviour
         isReload = false;
         CansSwitch = true;
         LeftHand.weight = 1;
-
-
     }
 
 }

@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.XR;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.Animations.Rigging;
@@ -19,6 +16,7 @@ public class PlayerMove : MonoBehaviour
     float gravity = 0.3f;
     [Tooltip("감도설정")]
     public float RotSpeed = 100f; 
+
     float speed = 3f;
     float default_speed_front = 3f;
     float default_speed_backward = 2f;
@@ -76,7 +74,6 @@ public class PlayerMove : MonoBehaviour
     void PlayerInput() //플레이어의 마우스, 키보드 입력을 받는 함수
     {
         moveHV(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        Sit(Input.GetKey(KeyCode.C));
     }
 
     void Audio()
@@ -197,21 +194,6 @@ public class PlayerMove : MonoBehaviour
 
 
 
-    void Sit(bool PressC)
-    {
-        if (PressC == true)
-        {
-            Debug.Log("C키 눌림");
-            //speed = sitSpeed;
-        }
-        else
-        {
-            //speed = 1f;
-        }
-
-
-    }
-
     Vector3 Jump()
     {
         if (CC.isGrounded == true)
@@ -234,11 +216,4 @@ public class PlayerMove : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "EnemyBullet")
-        {
-            Debug.Log("플레이어 피격");
-        }
-    }
 }
