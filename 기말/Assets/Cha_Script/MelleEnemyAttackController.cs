@@ -15,7 +15,7 @@ public class MelleEnemyAttackController : MonoBehaviour
     [Header("공격 설정")]
     public float attackRange = 1.5f; //공격 사거리
     public float attackCooldown = 2f; //공격 쿨타임
-    public int attackDamage;//공격 데미지
+    public float attackDamage;//공격 데미지
     public float attackDelay = 0.5f; //공격 판정 
 
     private float lastAttackTime; //마지막 공격 시간을 기록
@@ -35,7 +35,7 @@ public class MelleEnemyAttackController : MonoBehaviour
             currentLevel = 1;
         }
 
-        attackDamage=10*currentLevel; //공격 데미지 계산
+        attackDamage=50.0f*currentLevel; //공격 데미지 계산
     }
 
     private void Start()
@@ -105,10 +105,11 @@ public class MelleEnemyAttackController : MonoBehaviour
         if (player != null && Vector3.Distance(transform.position, player.position) <= attackRange + 0.1f)
         {
             //플레이어에게 데미지 주기
-            PlayerStates playerStats = player.GetComponent<PlayerStates>();
+            PlayerStates playerStats = player.GetComponent<PlayerStates>(); //PlayerStates 넣어줌
             if (playerStats != null)
             {
                 //playerStats.TakeDamage(attackDamage); //PlayerStats의 TakeDamage함수 호출
+                playerStats.Hit(attackDamage);
                 Debug.Log("플레이어에게 " + (attackDamage) + "데미지를 입힘!");
             }
             else
