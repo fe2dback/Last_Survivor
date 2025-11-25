@@ -55,7 +55,7 @@ public class PlayerStates : MonoBehaviour
         {
             GainExp(16);
         }
-        //CheckPlayer();
+        CheckPlayer();
     }
    
     //체력, 경험치 이미지 갱신
@@ -107,7 +107,7 @@ public class PlayerStates : MonoBehaviour
 
     }
     //GameManager, ItemManger 부분 Instance 에러로 인해 비활성화
-    /*
+    
     void CheckPlayer()
     {
         if (check)
@@ -127,7 +127,7 @@ public class PlayerStates : MonoBehaviour
         }
 
     }
-    */
+    
 
     private void OnTriggerEnter(Collider other)
     {
