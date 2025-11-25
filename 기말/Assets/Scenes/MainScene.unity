@@ -127,7 +127,6 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 2078774585353570862, guid: bf5e94a0c83511a40ac767f49eb04fd1, type: 3}
   m_PrefabInstance: {fileID: 2096105737}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
 --- !u!1001 &299979245
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -197,8 +196,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2915974947025931772, guid: bf5e94a0c83511a40ac767f49eb04fd1, type: 3}
   m_PrefabInstance: {fileID: 2096105737}
   m_PrefabAsset: {fileID: 0}
-=======
->>>>>>> parent of 601b2d3d (PlayerSkillSet)
 --- !u!114 &326785586 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5552619515905503757, guid: bf5e94a0c83511a40ac767f49eb04fd1, type: 3}
@@ -312,32 +309,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 237920156003404229, guid: bf5e94a0c83511a40ac767f49eb04fd1, type: 3}
   m_PrefabInstance: {fileID: 2096105737}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-=======
---- !u!1 &849356711 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5574291535105750770, guid: 9bfe4be3806ec3c41a85a24c42a9aeb1, type: 3}
-  m_PrefabInstance: {fileID: 1389352555}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &849356722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 849356711}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98e38509ad8d544448986f16b27415ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1481390251}
-  nvAgent: {fileID: 0}
-  attackRange: 1.5
-  attackCooldown: 2
-  attackDamage: 0
-  attackDelay: 0.5
->>>>>>> parent of 601b2d3d (PlayerSkillSet)
 --- !u!1 &948124457
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,86 +621,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-=======
---- !u!1001 &1389352555
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 89345311746875115, guid: 9bfe4be3806ec3c41a85a24c42a9aeb1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -13.548
-      objectReference: {fileID: 0}
-    - target: {fileID: 89345311746875115, guid: 9bfe4be3806ec3c41a85a24c42a9aeb1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.631
-      objectReference: {fileID: 0}
-    - target: {fileID: 89345311746875115, guid: 9bfe4be3806ec3c41a85a24c42a9aeb1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -6.24
-      objectReference: {fileID: 0}
-    - target: {fileID: 89345311746875115, guid: 9bfe4be3806ec3c41a85a24c42a9aeb1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 89345311746875115, guid: 9bfe4be3806ec3c41a85a24c42a9aeb1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 89345311746875115, guid: 9bfe4be3806ec3c41a85a24c42a9aeb1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 89345311746875115, guid: 9bfe4be3806ec3c41a85a24c42a9aeb1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 89345311746875115, guid: 9bfe4be3806ec3c41a85a24c42a9aeb1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 89345311746875115, guid: 9bfe4be3806ec3c41a85a24c42a9aeb1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 89345311746875115, guid: 9bfe4be3806ec3c41a85a24c42a9aeb1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3972384737313350344, guid: 9bfe4be3806ec3c41a85a24c42a9aeb1, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1481390251}
-    - target: {fileID: 5574291535105750770, guid: 9bfe4be3806ec3c41a85a24c42a9aeb1, type: 3}
-      propertyPath: m_Name
-      value: EnemyCase1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5574291535105750770, guid: 9bfe4be3806ec3c41a85a24c42a9aeb1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 849356722}
-  m_SourcePrefab: {fileID: 100100000, guid: 9bfe4be3806ec3c41a85a24c42a9aeb1, type: 3}
->>>>>>> parent of 601b2d3d (PlayerSkillSet)
 --- !u!4 &1431530314 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4875224857630953842, guid: bf5e94a0c83511a40ac767f49eb04fd1, type: 3}
   m_PrefabInstance: {fileID: 2096105737}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-=======
---- !u!4 &1481390251 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2915974947025931772, guid: bf5e94a0c83511a40ac767f49eb04fd1, type: 3}
-  m_PrefabInstance: {fileID: 2096105737}
-  m_PrefabAsset: {fileID: 0}
->>>>>>> parent of 601b2d3d (PlayerSkillSet)
 --- !u!1 &1482385868
 GameObject:
   m_ObjectHideFlags: 0
@@ -1484,8 +1380,4 @@ SceneRoots:
   - {fileID: 2042471658}
   - {fileID: 2133700233}
   - {fileID: 1773837624}
-<<<<<<< HEAD
   - {fileID: 299979245}
-=======
-  - {fileID: 1389352555}
->>>>>>> parent of 601b2d3d (PlayerSkillSet)
