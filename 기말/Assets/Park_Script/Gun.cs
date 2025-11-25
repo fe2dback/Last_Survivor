@@ -10,16 +10,13 @@ public class Gun : MonoBehaviour
 
     int RifleAmmo = 30;
     float BeforeTime;
-
-    public static float Delay;
     public AudioSource Fire_A;
     public AudioSource Reload_A;
     public AudioSource NoAmmo_A;
-
-
+    // Start is called before the first frame update
     void Start()
     {
-        Delay = 0.5f;
+
     }
 
     // Update is called once per frame
@@ -30,7 +27,7 @@ public class Gun : MonoBehaviour
         {
             if (RifleAmmo >= 1)
             {
-                if (Time.time > BeforeTime + Delay)
+                if (Time.time > BeforeTime + 0.2f)
                 {
                     RifleAmmo -= 1;
                     Debug.Log(RifleAmmo);
