@@ -21,7 +21,6 @@ public class PlayerMove : MonoBehaviour
     float default_speed_front = 3f;
     float default_speed_backward = 2f;
     float sprint = 6f;
-    float sitSpeed = 0.5f;
     float JumpPower = 4f;
 
     float yAxis = 0f;
@@ -49,7 +48,9 @@ public class PlayerMove : MonoBehaviour
         if(!GameManager.Instance.PlayerDead)
         {
             RotateY();
-            PlayerInput();          
+            
+            PlayerInput();
+            
         }
         Audio();
         //Debug.Log(CC.velocity.magnitude);
@@ -73,7 +74,11 @@ public class PlayerMove : MonoBehaviour
 
     void PlayerInput() //플레이어의 마우스, 키보드 입력을 받는 함수
     {
-        moveHV(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
+        
+        MoveXZ(Input.GetAxis("Horizontal") ,Input.GetAxis("Vertical"));
+        
+            
     }
 
     void Audio()
@@ -108,8 +113,12 @@ public class PlayerMove : MonoBehaviour
     }
 
 
-    void moveHV(float Ix, float Iz) // 플레이어의 이동 처리
+    void MoveXZ(float Ix, float Iz) // 플레이어의 이동 처리
     {
+        Ix = CC.isGrounded ? Ix : Ix * 0.5f; //공중에서 좌우 속도 감소
+
+
+
         Vector3 InputDirection = new Vector3(Ix, 0f, Iz);
 
         if (InputDirection.magnitude > 1f)
@@ -154,9 +163,8 @@ public class PlayerMove : MonoBehaviour
             speed = default_speed_front;
             if (Input.GetKey(KeyCode.LeftShift)) //달릴때
             {
+                speed = CC.isGrounded ? sprint : sprint * 1.25f;
                 animator.SetFloat("zDir", 2, 0.25f, Time.deltaTime);
-                
-                speed = sprint;
 
                 isrun = true;
             }
