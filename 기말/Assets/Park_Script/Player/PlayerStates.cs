@@ -52,10 +52,11 @@ public class PlayerStates : MonoBehaviour
     }
 
     //피격
+    //
     public void Hit(float damage)
     {
         setHealth(getHealth() - damage);
-        Debug.Log("공격받음 현재 체력: " + currentHP);
+        Debug.Log("공격 받음 현재 체력: " + currentHP);//공격받는 상태 보여주는 Debug
         //변경사항
         UpdateHPBar();
     }
