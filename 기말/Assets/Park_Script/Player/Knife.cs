@@ -18,11 +18,11 @@ public class Knife : MonoBehaviour
         
     }
 
-    private void OnTriggerStay(Collider other)
+    /*private void OnTriggerStay(Collider other)
     {
         if(other.CompareTag("Enemy") && playerInput.Knife_Attack)
         {
             Debug.Log("knife hit");
         }
-    }
+    }*/
 }
