@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager GM;
 
+    Transform SpawnPoint;
+
+    public GameObject Player;
     public int level { get; private set; } = 0;
 
     public bool PlayerDead = false;
@@ -36,6 +39,12 @@ public class GameManager : MonoBehaviour
             }
             return GM;
         }
+    }
+
+    private void Start()
+    {
+        SpawnPoint = GetComponentInChildren<Transform>().Find("PlayerSpawn");
+        Player.transform.position = SpawnPoint.position;
     }
 
     public void AddLevel()
