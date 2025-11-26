@@ -2,15 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerStates : MonoBehaviour
 {
     [Header("UI연결")]
     public Image hpFill;
+    public Image expFill;
 
-    [Header("체력 수치")]
+    [Header("UI 수치")]
+    public int level = 1;
+    public TMP_Text levelText;
     public float maxHP = 100f;
     private float currentHP;
+    public float maxEXP = 100f; 
+    private float currentEXP = 0f;
+    
 
     Animator animator;
 
@@ -29,6 +36,8 @@ public class PlayerStates : MonoBehaviour
         //체력 초기화 , 나중에 묶어서 메서드 만들거임
         currentHP = maxHP;
         UpdateHPBar();
+        currentEXP = 0f;
+        UpdateEXPBar();
 
         animator = GetComponent<Animator>();
     }
@@ -37,18 +46,46 @@ public class PlayerStates : MonoBehaviour
     void Update()
     {
 
-        //체력 감소 테스트용 함수
+        //체력 감소, 경험치 증가 테스트용 함수
         if (Input.GetKeyDown(KeyCode.T))
         {
             Hit(4);
         }
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            GainExp(16);
+        }
         CheckPlayer();
     }
-
-    //체력 이미지 갱신
+   
+    //체력, 경험치 이미지 갱신
     private void UpdateHPBar()
     {
         hpFill.fillAmount = currentHP / maxHP;
+    }
+    private void UpdateEXPBar()
+    {
+        expFill.fillAmount = currentEXP / maxEXP;
+    }
+
+    //경험치 획득
+    public void GainExp(float amount)
+    {
+        currentEXP += amount;
+        
+        if (currentEXP >= maxEXP)
+        {
+            currentEXP -= maxEXP;
+            level++;
+            maxEXP *= 1.3f; // 다음 레벨 요구치 상승
+        }
+        UpdateLevelUI();
+        UpdateEXPBar();
+    }
+    //레벨 UI
+    private void UpdateLevelUI()
+    {
+        levelText.text = $": {level}";
     }
 
     //피격
