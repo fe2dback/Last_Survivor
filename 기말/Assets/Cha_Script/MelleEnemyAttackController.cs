@@ -13,21 +13,28 @@ public class MelleEnemyAttackController : MonoBehaviour
     public NavMeshAgent nvAgent;
 
     [Header("공격 설정")]
-    public float attackRange = 1.5f; //공격 사거리
-    public float attackCooldown = 2f; //공격 쿨타임
+    public float attackRange = 1.8f; //공격 사거리 (기존: 1.5f)
+    public float attackCooldown = 2.5f; //공격 쿨타임 (기존: 2f)
     public float attackDamage;//공격 데미지
-    public float attackDelay = 0.5f; //공격 판정 
+    public float attackDelay = 0.6f; //공격 판정 전 대기시간 (기존: 0.5f)
+    public float attackHitBuffer = 0.5f; // 공격 판정 시 attackRange에 더할 여유 범위 (기존: 0.2f)
+
+    [Header("공격 후 움직임 설정")]
+    public float targetRetreatDistanceFromPlayer = 4.0f; // ★ 변경! ★ 공격 후 플레이어로부터 떨어질 목표 거리 (기존: 3.0f, 공격 사거리보다 충분히 크게)
+    public float retreatSpeedMultiplier = 2.0f; // 후퇴할 때의 속도 배율 (기존: 1.5f, 더 빠르게)
+    public float reEngageDelay = 0.7f; // 후퇴 후 다시 추격하기 전 잠시 대기 시간 (기존: 0.5f)
 
     private float lastAttackTime; //마지막 공격 시간을 기록
     private bool isAttacking = false; //현재 공격 동작 중인지 여부
+    private bool isRetreating = false; // 현재 후퇴 중인지 여부 (추가)
+    private float originalAgentSpeed; // NavMeshAgent의 원래 속도 저장용
 
     void Awake()
     {
-        enemyStats =GetComponent<EnemyStats>();
+        enemyStats = GetComponent<EnemyStats>();
         if (enemyStats != null)
         {
-            //EnemyStats 16line에서 받아온 값
-            currentLevel = enemyStats.CurrentEnemyLevel; //EnemyStats에서 계산된 MaxHealth로 초기화
+            currentLevel = enemyStats.CurrentEnemyLevel;
         }
         else
         {
@@ -35,20 +42,20 @@ public class MelleEnemyAttackController : MonoBehaviour
             currentLevel = 1;
         }
 
-        attackDamage=50.0f*currentLevel; //공격 데미지 계산
+        attackDamage = 50.0f * currentLevel;
     }
 
     private void Start()
     {
         if (nvAgent == null)
         {
-            nvAgent=GetComponent<NavMeshAgent>();
+            nvAgent = GetComponent<NavMeshAgent>();
         }
 
         if (nvAgent == null)
         {
             Debug.Log("NavMeshAgent 컴포넌트가 MelleEnemyAttackController 스크립트에 할당되지 않았거나, 찾을 수 없음!");
-            enabled = false; //스크립트 비활성화
+            enabled = false;
             return;
         }
 
@@ -60,61 +67,84 @@ public class MelleEnemyAttackController : MonoBehaviour
                 player = playerObj.transform;
             }
         }
-        lastAttackTime = -attackCooldown; // 시작하고서 바로 공격할 수 있도록 초기화
+        lastAttackTime = -attackCooldown;
+
+        if (nvAgent != null)
+        {
+            originalAgentSpeed = nvAgent.speed; // 원래 속도 저장
+            nvAgent.stoppingDistance = attackRange - 0.1f; // 공격 사거리 - 0.1f로 설정해서 공격 범위 안에서 멈추도록
+            if (nvAgent.stoppingDistance < 0.1f) nvAgent.stoppingDistance = 0.1f; // 최소값 보장
+        }
+        Debug.Log($"[MelleEnemyAttackController] Enemy stoppingDistance set to: {nvAgent.stoppingDistance}");
     }
 
     void Update()
     {
-        if (player == null) return; //플레이어가 죽으면 아무것도 안함, //이 객체가 destroy가 안된다는 뜻
+        if (player == null) return;
 
-        float distanceToPlayer=Vector3.Distance(transform.position, player.position);
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        if (distanceToPlayer <= attackRange)//플레이어가 사거리 안에 들어왔을때
+        // isRetreating 상태일 때는 추격이나 공격 로직을 잠시 멈춤
+        // (nvAgent의 속도나 목적지를 변경하지 않도록)
+        if (isRetreating)
         {
-            //공격 중이 아닐때 NavMeshAgent 멈춤
+            // 후퇴 중에도 플레이어를 바라보도록 할 수 있지만, 후퇴의 자연스러움을 위해 잠시 꺼둘 수도 있음
+            // Vector3 lookDirection = player.position - transform.position;
+            // lookDirection.y = 0;
+            // if (lookDirection != Vector3.zero)
+            // {
+            //     transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookDirection), Time.deltaTime * nvAgent.angularSpeed);
+            // }
+            return;
+        }
+
+        // 플레이어가 공격 사거리 안에 들어왔을 때
+        if (distanceToPlayer <= attackRange)
+        {
+            // 공격 중이 아니면 NavMeshAgent 멈추고 회전
             if (!isAttacking)
             {
-                // 이미 멈춰있지 않으면 멈추고, 즉시 정지시킨다.
                 if (nvAgent.isOnNavMesh && !nvAgent.isStopped)
                 {
                     nvAgent.isStopped = true;
-                    nvAgent.velocity = Vector3.zero; // 혹시 모를 잔여 움직임 제거
+                    nvAgent.velocity = Vector3.zero;
+                    Debug.Log("[MelleEnemyAttackController] 적 정지: 공격 범위 진입 및 공격 대기");
+                }
+
+                // 플레이어를 바라보게 회전
+                Vector3 lookDirection = player.position - transform.position;
+                lookDirection.y = 0;
+                if (lookDirection != Vector3.zero)
+                {
+                    transform.rotation = Quaternion.Slerp(transform.rotation,
+                        Quaternion.LookRotation(lookDirection), Time.deltaTime * nvAgent.angularSpeed);
                 }
             }
 
-            //플레이어를 바라보게 회전
-            Vector3 lookDirection = player.position-transform.position;
-            lookDirection.y = 0; //Y축 회전 고정(바닥만 보도록)
-            if (lookDirection != Vector3.zero)
-            {
-                transform.rotation = Quaternion.Slerp(transform.rotation, 
-                    Quaternion.LookRotation(lookDirection),Time.deltaTime*nvAgent.angularSpeed);
-            }
-
+            // 공격 쿨타임이 지났고, 공격 중이 아니면 AttackRoutine 시작
             if (Time.time >= lastAttackTime + attackCooldown && !isAttacking)
             {
+                Debug.Log("[MelleEnemyAttackController] 공격 루틴 시작 조건 충족");
                 StartCoroutine(AttackRoutine());
             }
-            else // 플레이어가 사거리 밖에 있을 때 (추적 상태로 돌아가야 함)
+        }
+        // 플레이어가 공격 사거리 밖에 있을 때 (추적 상태)
+        else
+        {
+            // 공격 중이 아니며, 현재 멈춰있는 상태라면 다시 움직임을 재개한다.
+            // MelleEnemyAI 스크립트가 !nvAgent.isStopped 상태를 확인하고 SetDestination을 호출할 것임.
+            if (!isAttacking && nvAgent.isOnNavMesh && nvAgent.isStopped)
             {
-                // !!! 여기는 그냥 두면 돼. MelleEnemyAI가 isStopped가 false면 알아서 추적할 거니까. !!!
-                // 만약 isAttacking이 false인데, 공격 때문에 멈춰있었다면 이제 움직여야 해.
-                // 이 부분을 MelleEnemyAI가 관리하게 하거나, AttackRoutine 끝에서 명확히 넘겨주는 게 더 좋아.
-                // 지금은 MelleEnemyAttackController에서 직접 nvAgent.SetDestination을 호출하지 않고,
-                // isStopped = false;로 MelleEnemyAI가 다시 추적하도록 유도하는 방식으로 갈게.
-                if (!isAttacking && nvAgent.isOnNavMesh && nvAgent.isStopped)
-                {
-                    nvAgent.isStopped = false; // 공격이 끝나고 사거리 밖이면 다시 움직이게 해줘야 해.
-                                               // MelleEnemyAI가 이것을 보고 SetDestination을 호출할 거야.
-                }
+                nvAgent.isStopped = false;
+                Debug.Log("[MelleEnemyAttackController] 적 재시작: 플레이어가 공격 범위 밖으로 이동");
             }
         }
     }
 
     IEnumerator AttackRoutine()
     {
-        isAttacking = true; //공격 시작 상태로 변경
-        lastAttackTime = Time.time; //마지막 공격 시간 갱신
+        isAttacking = true;
+        lastAttackTime = Time.time;
 
         // 공격 시작 시점에 확실히 멈춤
         if (nvAgent.isOnNavMesh && !nvAgent.isStopped)
@@ -123,39 +153,112 @@ public class MelleEnemyAttackController : MonoBehaviour
             nvAgent.velocity = Vector3.zero;
         }
 
-        Debug.Log("적 공격 준비(애니메이션 안넣음)");
+        Debug.Log("[MelleEnemyAttackController] 적 공격 준비 (애니메이션 넣을 시 대기)");
 
         yield return new WaitForSeconds(attackDelay);
 
-        //공격 판정 시점: 플레이어가 여전히 범위 내에 있는지 다시 확인(어렵게할려면 attackRange 뒤에 수를 줄이셈)
-        if (player != null && Vector3.Distance(transform.position, player.position) <= attackRange + 0.1f)
+        // 공격 판정 로직
+        float currentDistance = Vector3.Distance(transform.position, player.position);
+        if (player != null && currentDistance <= attackRange + attackHitBuffer)
         {
-            //플레이어에게 데미지 주기
-            PlayerStates playerStats = player.GetComponent<PlayerStates>(); //PlayerStates 넣어줌
+            Debug.Log($"[MelleEnemyAttackController] 플레이어 히트! 현재 거리: {currentDistance:F2} / 판정 범위: {attackRange + attackHitBuffer:F2}");
+            PlayerStates playerStats = player.GetComponent<PlayerStates>();
             if (playerStats != null)
             {
-                //playerStats.TakeDamage(attackDamage); //PlayerStats의 TakeDamage함수 호출
                 playerStats.Hit(attackDamage);
                 Debug.Log("플레이어에게 " + (attackDamage) + "데미지를 입힘!");
             }
             else
             {
-                Debug.Log("플레이어의 'PlayerStats'스크립트를 찾을 수 없음(데미지 적용 실패)");
+                Debug.LogWarning("[MelleEnemyAttackController] 플레이어의 'PlayerStates'스크립트를 찾을 수 없음(데미지 적용 실패)");
             }
         }
         else
         {
-            Debug.Log("플레이어가 공격 범위 밖으로 이동하여 공격을 피함");
+            Debug.Log($"[MelleEnemyAttackController] 플레이어가 공격 범위 밖으로 이동하여 공격을 피함! 현재 거리: {currentDistance:F2} / 판정 범위: {attackRange + attackHitBuffer:F2}");
         }
-        isAttacking = false;
 
-        // 공격이 끝나면 MelleEnemyAI가 추적을 시작할 수 있도록 nvAgent.isStopped를 false로 설정해야 해.
-        // 이것이 가장 확실하게 제어권을 MelleEnemyAI에게 다시 넘겨주는 방법이야.
-        if (nvAgent != null && nvAgent.isOnNavMesh)
+        isAttacking = false; // 공격 종료 시점
+
+        // --- 여기서부터 후퇴(Retreat) 로직 시작 ---
+        if (nvAgent != null && nvAgent.isOnNavMesh && nvAgent.enabled)
         {
-            nvAgent.isStopped = false;
-            // isStopped가 false가 되면 MelleEnemyAI 스크립트의 Update가 다시 SetDestination을 호출하게 될 거야.
-        }
+            isRetreating = true; // 후퇴 시작 상태
+            nvAgent.isStopped = false; // 후퇴를 위해 에이전트 활성화 (움직일 수 있도록)
+            nvAgent.speed = originalAgentSpeed * retreatSpeedMultiplier; // 후퇴 시 속도 증가
 
+            // 플레이어로부터 'targetRetreatDistanceFromPlayer' 만큼 떨어진 목표 지점 계산
+            Vector3 playerPosAtAttack = player.position; // 공격 시점의 플레이어 위치 저장
+            Vector3 retreatDirection = (transform.position - playerPosAtAttack).normalized; // 플레이어로부터 멀어지는 방향
+            Vector3 targetRetreatPosition = playerPosAtAttack + retreatDirection * targetRetreatDistanceFromPlayer;
+
+            // 후퇴 목표 지점을 NavMesh 상에서 유효한 위치로 보정
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(targetRetreatPosition, out hit, targetRetreatDistanceFromPlayer + 2f, NavMesh.AllAreas))
+            {
+                targetRetreatPosition = hit.position;
+            }
+            else
+            {
+                // 유효한 위치를 찾지 못하면 플레이어 반대 방향으로 임시 목표 설정 (최대한 멀리)
+                targetRetreatPosition = transform.position + retreatDirection * (targetRetreatDistanceFromPlayer + 1f);
+                Debug.LogWarning("[MelleEnemyAttackController] 후퇴 목표 지점 NavMesh 찾기 실패, 대체 위치 사용");
+            }
+
+            nvAgent.SetDestination(targetRetreatPosition);
+            Debug.Log($"[MelleEnemyAttackController] 적 후퇴 시작. 목표 지점 (플레이어로부터): {targetRetreatPosition}");
+
+            // 목적지에 거의 도달할 때까지 기다리거나, 일정 시간 후 강제 종료
+            float timer = 0f;
+            float maxRetreatTime = targetRetreatDistanceFromPlayer / nvAgent.speed + 1f; // 대략적인 최대 후퇴 시간
+
+            while (nvAgent.pathPending || nvAgent.remainingDistance > nvAgent.stoppingDistance + 0.1f)
+            {
+                // NavMeshAgent가 NavMesh 위에 있지 않으면 루프 탈출
+                if (!nvAgent.isOnNavMesh) break;
+                // 후퇴 중 플레이어가 너무 멀어지면 (예: 텔레포트) 후퇴 중지
+                if (Vector3.Distance(transform.position, player.position) > targetRetreatDistanceFromPlayer * 2f) break;
+
+                timer += Time.deltaTime;
+                if (timer > maxRetreatTime) // 최대 후퇴 시간 초과 시 강제 종료
+                {
+                    Debug.LogWarning("[MelleEnemyAttackController] 최대 후퇴 시간 초과, 후퇴 강제 종료");
+                    break;
+                }
+                yield return null;
+            }
+
+            // 후퇴가 끝나면 속도를 원래대로 돌려놓음
+            nvAgent.speed = originalAgentSpeed;
+
+            // 후퇴 후 다시 추격하기 전 잠시 대기
+            if (reEngageDelay > 0)
+            {
+                if (nvAgent.isOnNavMesh && !nvAgent.isStopped) // 후퇴 이동 후 잠시 멈춤
+                {
+                    nvAgent.isStopped = true;
+                    nvAgent.velocity = Vector3.zero;
+                }
+                yield return new WaitForSeconds(reEngageDelay);
+            }
+
+            // 최종적으로 MelleEnemyAI가 플레이어를 다시 추격하도록 활성화
+            if (nvAgent.isOnNavMesh)
+            {
+                nvAgent.isStopped = false;
+            }
+            isRetreating = false; // 후퇴 종료
+            Debug.Log("[MelleEnemyAttackController] 적 후퇴 완료 및 추격 재시작 신호 보냄");
+        }
+        else // NavMeshAgent가 유효하지 않거나 비활성화된 경우 후퇴 스킵
+        {
+            if (nvAgent != null && nvAgent.isOnNavMesh)
+            {
+                nvAgent.isStopped = false;
+            }
+            isRetreating = false;
+            Debug.Log("[MelleEnemyAttackController] 적 공격 루틴 종료 (후퇴 미적용), 추격 재시작 신호 보냄");
+        }
+        // --- 후퇴 로직 끝 ---
     }
 }
