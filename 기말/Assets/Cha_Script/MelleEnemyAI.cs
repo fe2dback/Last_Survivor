@@ -16,7 +16,7 @@ public class MelleEnemyAI : MonoBehaviour
 
     private void Awake()
     {
-        enemyRenderer=GetComponent<Renderer>();
+        enemyRenderer = GetComponentInChildren<Renderer>();
         enemyColor = GetComponent<Renderer>();
         nvAgent = GetComponent<NavMeshAgent>();
 
