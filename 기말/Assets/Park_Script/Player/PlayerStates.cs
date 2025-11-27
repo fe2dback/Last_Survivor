@@ -9,6 +9,7 @@ public class PlayerStates : MonoBehaviour
     [Header("UI연결")]
     public Image hpFill;
     public Image expFill;
+    public GameObject HitBorder;
 
     [Header("UI 수치")]
     public int level = 1;
@@ -109,8 +110,15 @@ public class PlayerStates : MonoBehaviour
     {
         setHealth(getHealth() - damage);
         Debug.Log("공격받음 현재 체력: " + currentHP);
+        HitBorder.SetActive(true);
+        Invoke("InitBorder", 0.5f);
         //변경사항
         UpdateHPBar();
+    }
+
+    void InitBorder()
+    {
+        HitBorder.SetActive(false);
     }
 
     void Heal(int hp)
