@@ -12,6 +12,9 @@ public class MelleEnemyAttackController : MonoBehaviour
     public Transform player;
     public NavMeshAgent nvAgent;
 
+    // ★ 추가 ★ MelleEnemyAI에서 Animator를 가져올 참조 변수
+    private Animator anim;
+
     [Header("공격 설정")]
     public float attackRange = 1.8f; //공격 사거리 (기존: 1.5f)
     public float attackCooldown = 2.5f; //공격 쿨타임 (기존: 2f)
@@ -42,7 +45,14 @@ public class MelleEnemyAttackController : MonoBehaviour
             currentLevel = 1;
         }
 
-        attackDamage = 50.0f * currentLevel;
+        attackDamage = 00.0f * currentLevel;
+
+        // ★ 추가 ★ Animator 컴포넌트 가져오기 (MelleEnemyAI와 같은 오브젝트에 있을 경우)
+        anim = GetComponent<Animator>();
+        if (anim == null)
+        {
+            Debug.LogWarning("MelleEnemyAttackController: Animator 컴포넌트를 찾을 수 없습니다! 애니메이션이 동작하지 않을 수 있습니다.", this);
+        }
     }
 
     private void Start()
@@ -84,24 +94,14 @@ public class MelleEnemyAttackController : MonoBehaviour
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        // isRetreating 상태일 때는 추격이나 공격 로직을 잠시 멈춤
-        // (nvAgent의 속도나 목적지를 변경하지 않도록)
         if (isRetreating)
         {
-            // 후퇴 중에도 플레이어를 바라보도록 할 수 있지만, 후퇴의 자연스러움을 위해 잠시 꺼둘 수도 있음
-            // Vector3 lookDirection = player.position - transform.position;
-            // lookDirection.y = 0;
-            // if (lookDirection != Vector3.zero)
-            // {
-            //     transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookDirection), Time.deltaTime * nvAgent.angularSpeed);
-            // }
             return;
         }
 
         // 플레이어가 공격 사거리 안에 들어왔을 때
         if (distanceToPlayer <= attackRange)
         {
-            // 공격 중이 아니면 NavMeshAgent 멈추고 회전
             if (!isAttacking)
             {
                 if (nvAgent.isOnNavMesh && !nvAgent.isStopped)
@@ -153,6 +153,13 @@ public class MelleEnemyAttackController : MonoBehaviour
             nvAgent.velocity = Vector3.zero;
         }
 
+        // ★ 추가 ★ 공격 애니메이션 재생
+        if (anim != null)
+        {
+            anim.SetTrigger("Attack"); // "Attack" 트리거를 설정해서 공격 애니메이션 재생
+            // 혹시 'IsAttack' 같은 bool 값을 쓴다면 SetBool("IsAttack", true);
+        }
+
         Debug.Log("[MelleEnemyAttackController] 적 공격 준비 (애니메이션 넣을 시 대기)");
 
         yield return new WaitForSeconds(attackDelay);
@@ -178,14 +185,23 @@ public class MelleEnemyAttackController : MonoBehaviour
             Debug.Log($"[MelleEnemyAttackController] 플레이어가 공격 범위 밖으로 이동하여 공격을 피함! 현재 거리: {currentDistance:F2} / 판정 범위: {attackRange + attackHitBuffer:F2}");
         }
 
+        // ★ 추가 ★ 공격 애니메이션이 끝났다면 bool 값을 false로 (트리거를 썼다면 필요 없음)
+        // if (anim != null) anim.SetBool("IsAttack", false); 
+
         isAttacking = false; // 공격 종료 시점
 
         // --- 여기서부터 후퇴(Retreat) 로직 시작 ---
+        isRetreating = true;
+        anim.SetBool("IsRun", true);
+
         if (nvAgent != null && nvAgent.isOnNavMesh && nvAgent.enabled)
         {
             isRetreating = true; // 후퇴 시작 상태
             nvAgent.isStopped = false; // 후퇴를 위해 에이전트 활성화 (움직일 수 있도록)
             nvAgent.speed = originalAgentSpeed * retreatSpeedMultiplier; // 후퇴 시 속도 증가
+
+            // ★ 추가 ★ 후퇴할 때 달리기 애니메이션 켜주기 (MelleEnemyAI의 Update와 겹칠 수 있으므로 조심)
+            // 여기서는 MelleEnemyAI에서 nvAgent.velocity로 체크하므로 크게 문제되지 않을 거야.
 
             // 플레이어로부터 'targetRetreatDistanceFromPlayer' 만큼 떨어진 목표 지점 계산
             Vector3 playerPosAtAttack = player.position; // 공격 시점의 플레이어 위치 저장
@@ -200,7 +216,6 @@ public class MelleEnemyAttackController : MonoBehaviour
             }
             else
             {
-                // 유효한 위치를 찾지 못하면 플레이어 반대 방향으로 임시 목표 설정 (최대한 멀리)
                 targetRetreatPosition = transform.position + retreatDirection * (targetRetreatDistanceFromPlayer + 1f);
                 Debug.LogWarning("[MelleEnemyAttackController] 후퇴 목표 지점 NavMesh 찾기 실패, 대체 위치 사용");
             }
@@ -208,19 +223,16 @@ public class MelleEnemyAttackController : MonoBehaviour
             nvAgent.SetDestination(targetRetreatPosition);
             Debug.Log($"[MelleEnemyAttackController] 적 후퇴 시작. 목표 지점 (플레이어로부터): {targetRetreatPosition}");
 
-            // 목적지에 거의 도달할 때까지 기다리거나, 일정 시간 후 강제 종료
             float timer = 0f;
-            float maxRetreatTime = targetRetreatDistanceFromPlayer / nvAgent.speed + 1f; // 대략적인 최대 후퇴 시간
+            float maxRetreatTime = targetRetreatDistanceFromPlayer / nvAgent.speed + 1f;
 
-            while (nvAgent.pathPending || nvAgent.remainingDistance > nvAgent.stoppingDistance + 0.1f)
+            while (nvAgent.pathPending || (nvAgent.isOnNavMesh && nvAgent.remainingDistance > nvAgent.stoppingDistance + 0.1f))
             {
-                // NavMeshAgent가 NavMesh 위에 있지 않으면 루프 탈출
                 if (!nvAgent.isOnNavMesh) break;
-                // 후퇴 중 플레이어가 너무 멀어지면 (예: 텔레포트) 후퇴 중지
                 if (Vector3.Distance(transform.position, player.position) > targetRetreatDistanceFromPlayer * 2f) break;
 
                 timer += Time.deltaTime;
-                if (timer > maxRetreatTime) // 최대 후퇴 시간 초과 시 강제 종료
+                if (timer > maxRetreatTime)
                 {
                     Debug.LogWarning("[MelleEnemyAttackController] 최대 후퇴 시간 초과, 후퇴 강제 종료");
                     break;
@@ -228,13 +240,11 @@ public class MelleEnemyAttackController : MonoBehaviour
                 yield return null;
             }
 
-            // 후퇴가 끝나면 속도를 원래대로 돌려놓음
             nvAgent.speed = originalAgentSpeed;
 
-            // 후퇴 후 다시 추격하기 전 잠시 대기
             if (reEngageDelay > 0)
             {
-                if (nvAgent.isOnNavMesh && !nvAgent.isStopped) // 후퇴 이동 후 잠시 멈춤
+                if (nvAgent.isOnNavMesh && !nvAgent.isStopped)
                 {
                     nvAgent.isStopped = true;
                     nvAgent.velocity = Vector3.zero;
@@ -242,15 +252,14 @@ public class MelleEnemyAttackController : MonoBehaviour
                 yield return new WaitForSeconds(reEngageDelay);
             }
 
-            // 최종적으로 MelleEnemyAI가 플레이어를 다시 추격하도록 활성화
             if (nvAgent.isOnNavMesh)
             {
                 nvAgent.isStopped = false;
             }
-            isRetreating = false; // 후퇴 종료
+            isRetreating = false;
             Debug.Log("[MelleEnemyAttackController] 적 후퇴 완료 및 추격 재시작 신호 보냄");
         }
-        else // NavMeshAgent가 유효하지 않거나 비활성화된 경우 후퇴 스킵
+        else
         {
             if (nvAgent != null && nvAgent.isOnNavMesh)
             {

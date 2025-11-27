@@ -45,11 +45,6 @@ public class EnemyHealth : MonoBehaviour
         currentHealth-= damage;
         Debug.Log("적 현재 체력: " + currentHealth);
 
-        if (melleEnemyAI != null)
-        {
-            melleEnemyAI.ApplyHitEffect(0.2f);
-        }
-
         if (currentHealth <= 0)
         {
             Die();
