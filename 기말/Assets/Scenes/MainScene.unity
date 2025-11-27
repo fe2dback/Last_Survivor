@@ -18139,19 +18139,6 @@ Transform:
   - {fileID: 4339020982662720781}
   m_Father: {fileID: 1589409053150271589}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3535204410263831715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5948781548181013538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff881aef94184d548b664564055f8394, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  KnifeDamage: 25
 --- !u!1 &3569060789000811438
 GameObject:
   m_ObjectHideFlags: 0
@@ -19819,7 +19806,6 @@ GameObject:
   - component: {fileID: 276966310601349695}
   - component: {fileID: 4860505760693114511}
   - component: {fileID: 5253171678603415107}
-  - component: {fileID: 3535204410263831715}
   - component: {fileID: 1036722030}
   m_Layer: 0
   m_Name: Player(Kachujin G Rosales) Variant
@@ -25786,7 +25772,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!199 &7457702845014448607
 ParticleSystemRenderer:
@@ -35954,6 +35940,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4404590061852183287}
   - component: {fileID: 7404166108739999606}
+  - component: {fileID: 8119885292072753276}
+  - component: {fileID: 8119885292072753277}
   m_Layer: 0
   m_Name: KnifeArea
   m_TagString: knife
@@ -35961,6 +35949,46 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &8119885292072753276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8119885292072753275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff881aef94184d548b664564055f8394, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KnifeDamage: 50
+--- !u!54 &8119885292072753277
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8119885292072753275}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8143518605423061618
 GameObject:
   m_ObjectHideFlags: 0

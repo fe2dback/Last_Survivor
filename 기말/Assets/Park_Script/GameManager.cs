@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager GM;
 
+    Transform SpawnPoint;
+
+    public GameObject Player;
     public int level { get; private set; } = 0;
 
     public bool PlayerDead = false;
@@ -14,13 +17,13 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if(GM == null)
+        if (GM == null)
         {
             GM = this;
         }
         else
         {
-            
+
             Destroy(gameObject);
         }
     }
@@ -30,12 +33,18 @@ public class GameManager : MonoBehaviour
     {
         get
         {
-            if(null == GM)
+            if (null == GM)
             {
                 return null;
             }
             return GM;
         }
+    }
+
+    private void Start()
+    {
+        SpawnPoint = GetComponentInChildren<Transform>().Find("PlayerSpawn");
+        Player.transform.position = SpawnPoint.position;
     }
 
     public void AddLevel()
@@ -48,7 +57,7 @@ public class GameManager : MonoBehaviour
         while (true)
         {
             leftTime -= Time.deltaTime;
-            if(leftTime <= 0)
+            if (leftTime <= 0)
             {
                 //게임오버 처리
                 Debug.Log("게임오버");

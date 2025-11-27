@@ -54,6 +54,7 @@ public class EnemyHealth : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Bullet bullet = other.GetComponent<Bullet>();
+        Knife knife = other.GetComponent<Knife>();
         if (bullet != null)
         {
             // 총알의 데미지 만큼 체력을 깎음
@@ -61,6 +62,10 @@ public class EnemyHealth : MonoBehaviour
 
             // 총알은 충돌 후 제거
             Destroy(other.gameObject);
+        }
+        else if(knife != null)
+        {
+            TakeDamage(knife.KnifeDamage);
         }
     }
 
