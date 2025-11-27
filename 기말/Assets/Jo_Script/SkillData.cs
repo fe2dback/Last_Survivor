@@ -14,6 +14,12 @@ public class SkillData : ScriptableObject
     public float cooldown;
     public SkillType type;
 
+    // 추가: 스킬 성능 관련 값들
+    public float damage;          // 피해량
+    public float range;           // 사거리 / 범위
+    public float projectileSpeed; // 투사체 속도 (원거리면)
+    public float duration;        // 지속 시간 (버프/장판 등)
+
     [System.Serializable]
     public class SkillSlot
     {
