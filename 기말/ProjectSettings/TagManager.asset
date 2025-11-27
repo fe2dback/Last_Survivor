@@ -11,7 +11,6 @@ TagManager:
   - item
   - FxTemporaire
   - gun
-  - knife
   layers:
   - Default
   - TransparentFX
