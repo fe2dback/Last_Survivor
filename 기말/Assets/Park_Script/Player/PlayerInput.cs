@@ -136,9 +136,11 @@ public class PlayerInput : MonoBehaviour
         }
         else
         {
+            
             Laser.SetActive(false);
             Rifle_FireReady = false;
             AimRig.weight -= Time.deltaTime / 0.3f;
+            
         }
 
     }
