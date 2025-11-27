@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
 
     public bool PlayerDead = false;
 
-    private float leftTime = 30f;
+    [Header("단위 : 분")]
+    public float leftTime;
 
     private void Awake()
     {
@@ -43,10 +44,16 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Spawn();
+        StartCoroutine(timeDecrease());
+    }
+
+
+    void Spawn()
+    {
         SpawnPoint = GetComponentInChildren<Transform>().Find("PlayerSpawn");
         Player.transform.position = SpawnPoint.position;
     }
-
     public void AddLevel()
     {
         level++;
@@ -54,8 +61,10 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator timeDecrease()
     {
+        leftTime = leftTime * 60;
         while (true)
         {
+            Debug.Log(leftTime);
             leftTime -= Time.deltaTime;
             if (leftTime <= 0)
             {
@@ -67,16 +76,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    static IEnumerator DecreaseSpeed(float start, float end, float duration) //감소 코루틴
-    {
-        float timer = 0f;
-        while (timer < duration)
-        {
-            float currentValue = Mathf.Lerp(start, end, timer / duration);
-            timer += Time.deltaTime;
-            yield return null;
-        }
-    }
 
 
 }
