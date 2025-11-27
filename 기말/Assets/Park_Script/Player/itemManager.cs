@@ -10,6 +10,8 @@ public class ItemManager : MonoBehaviour
 
     public bool HasGun = false;
 
+    int QuestItemCount;
+
     private void Awake()
     {
         if (itemManager == null)
@@ -34,6 +36,7 @@ public class ItemManager : MonoBehaviour
             }
             return itemManager;
         }
+        
     }
 
     // Update is called once per frame
@@ -43,7 +46,12 @@ public class ItemManager : MonoBehaviour
         {
             DisplayInventory();
         }
-        
+
+        if(QuestItemCount == 4)
+        {
+           Debug.Log("Äù½ºÆ® ¾ÆÀÌÅÛ ¸ðµÎ È¹µæ");
+        }
+
     }
 
 
@@ -58,6 +66,12 @@ public class ItemManager : MonoBehaviour
         {
             Debug.Log(itemName + "È¹µæ");
             item.Add(itemName, quantity);
+        }
+
+        if (item.ContainsKey("Quest"))
+        {
+            QuestItemCount += quantity;
+            Debug.Log("Qitem");
         }
     }
 
