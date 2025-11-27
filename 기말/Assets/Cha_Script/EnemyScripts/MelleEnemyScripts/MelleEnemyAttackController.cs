@@ -58,6 +58,8 @@ public class MelleEnemyAttackController : MonoBehaviour
 
     private void Start()
     {
+        player = GameObject.FindWithTag("Player").transform;
+
         if (nvAgent == null)
         {
             nvAgent = GetComponent<NavMeshAgent>();

@@ -12,6 +12,11 @@ public class MelleEnemyAI : MonoBehaviour
     // Animator 컴포넌트 참조
     public Animator anim;
 
+
+    private void Start()
+    {
+        player = GameObject.FindWithTag("Player").transform;
+    }
     private void Awake()
     {
 
