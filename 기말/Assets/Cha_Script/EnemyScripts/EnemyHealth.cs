@@ -59,7 +59,7 @@ public class EnemyHealth : MonoBehaviour
         {
             // 총알의 데미지 만큼 체력을 깎음
             TakeDamage(bullet.bulletDamage);
-
+            Debug.Log(currentHealth);
             // 총알은 충돌 후 제거
             Destroy(other.gameObject);
         }
