@@ -62,6 +62,7 @@ public class PlayerRay : MonoBehaviour
                             break;
                         case "gun":
                             ItemManager.Instance.HasGun = true;
+                            Gun.RifleAmmo += 30;
                             TakeItem();
                             break;
                         default:

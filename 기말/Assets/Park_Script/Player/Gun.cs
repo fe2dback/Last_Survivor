@@ -8,7 +8,9 @@ public class Gun : MonoBehaviour
     public Transform FirePos;
     public GameObject FireEffect;
 
-    int RifleAmmo = 30;
+    public static int RifleAmmo;
+    int Mag;
+    int MaxMag;
     float BeforeTime;
     public AudioSource Fire_A;
     public AudioSource Reload_A;
@@ -16,7 +18,9 @@ public class Gun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        Mag = 0;
+        MaxMag = 0;
+        RifleAmmo = 0;
     }
 
     // Update is called once per frame
@@ -25,12 +29,12 @@ public class Gun : MonoBehaviour
         
         if (Input.GetMouseButton(0) && PlayerInput.Rifle_FireReady == true && PlayerInput.isReload == false)
         {
-            if (RifleAmmo >= 1)
+            if (Mag >= 1)
             {
                 if (Time.time > BeforeTime + 0.2f)
                 {
-                    RifleAmmo -= 1;
-                    Debug.Log(RifleAmmo);
+                    Mag -= 1;
+                    Debug.Log(Mag + "/" + RifleAmmo); // ¿Â¿¸µ»≈∫ / ≥≤¿∫≈∫
                     
                     StartCoroutine(MuzzleFlash());
                     Fire_A.Play();
@@ -55,7 +59,23 @@ public class Gun : MonoBehaviour
 
     public void Reload()
     {
-        RifleAmmo = 30;
+        if(Mag == MaxMag)
+        {
+            Debug.Log("max");
+        }
+
+        int BulletNeed = MaxMag -  Mag;
+        if (RifleAmmo < BulletNeed)
+        {
+            Mag += RifleAmmo;
+            RifleAmmo = 0;
+        }
+        else
+        {
+            Mag = MaxMag;
+            RifleAmmo -= BulletNeed;
+        }
+        
     }
 
 
