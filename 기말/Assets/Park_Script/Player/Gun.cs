@@ -37,8 +37,8 @@ public class Gun : MonoBehaviour
                     StartCoroutine(MuzzleFlash());
                     Fire_A.Play();
                     
-                    GameObject B = Instantiate(Bullet, FirePos.position, FirePos.rotation);
-                    Destroy(B, 3f);
+                    Instantiate(Bullet, FirePos.position, FirePos.rotation);
+                    
 
 
                     BeforeTime = Time.time;
