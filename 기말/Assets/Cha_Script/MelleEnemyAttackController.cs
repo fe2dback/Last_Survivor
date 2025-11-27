@@ -7,24 +7,25 @@ public class MelleEnemyAttackController : MonoBehaviour
 {
     private EnemyStats enemyStats;
     private int currentLevel; //현재 적 레벨
+    public float directDamage = 1;
 
     [Header("Place PlayerTransform!!")]
     public Transform player;
     public NavMeshAgent nvAgent;
 
-    // ★ 추가 ★ MelleEnemyAI에서 Animator를 가져올 참조 변수
+    // MelleEnemyAI에서 Animator를 가져올 참조 변수
     private Animator anim;
 
     [Header("공격 설정")]
     public float attackRange = 1.8f; //공격 사거리 (기존: 1.5f)
     public float attackCooldown = 2.5f; //공격 쿨타임 (기존: 2f)
     public float attackDamage;//공격 데미지
-    public float attackDelay = 0.6f; //공격 판정 전 대기시간 (기존: 0.5f)
+    public float attackDelay = 0.75f; //공격 판정 전 대기시간
     public float attackHitBuffer = 0.5f; // 공격 판정 시 attackRange에 더할 여유 범위 (기존: 0.2f)
 
     [Header("공격 후 움직임 설정")]
-    public float targetRetreatDistanceFromPlayer = 4.0f; // ★ 변경! ★ 공격 후 플레이어로부터 떨어질 목표 거리 (기존: 3.0f, 공격 사거리보다 충분히 크게)
-    public float retreatSpeedMultiplier = 2.0f; // 후퇴할 때의 속도 배율 (기존: 1.5f, 더 빠르게)
+    public float targetRetreatDistanceFromPlayer = 4.0f; //  공격 후 플레이어로부터 떨어질 목표 거리
+    public float retreatSpeedMultiplier = 2.0f; // 후퇴할 때의 속도 배율
     public float reEngageDelay = 0.7f; // 후퇴 후 다시 추격하기 전 잠시 대기 시간 (기존: 0.5f)
 
     private float lastAttackTime; //마지막 공격 시간을 기록
@@ -45,9 +46,9 @@ public class MelleEnemyAttackController : MonoBehaviour
             currentLevel = 1;
         }
 
-        attackDamage = 00.0f * currentLevel;
+        attackDamage = directDamage * currentLevel;
 
-        // ★ 추가 ★ Animator 컴포넌트 가져오기 (MelleEnemyAI와 같은 오브젝트에 있을 경우)
+        // Animator 컴포넌트 가져오기 (MelleEnemyAI와 같은 오브젝트에 있을 경우)
         anim = GetComponent<Animator>();
         if (anim == null)
         {
@@ -153,7 +154,7 @@ public class MelleEnemyAttackController : MonoBehaviour
             nvAgent.velocity = Vector3.zero;
         }
 
-        // ★ 추가 ★ 공격 애니메이션 재생
+        // 공격 애니메이션 재생
         if (anim != null)
         {
             anim.SetTrigger("Attack"); // "Attack" 트리거를 설정해서 공격 애니메이션 재생
@@ -185,9 +186,6 @@ public class MelleEnemyAttackController : MonoBehaviour
             Debug.Log($"[MelleEnemyAttackController] 플레이어가 공격 범위 밖으로 이동하여 공격을 피함! 현재 거리: {currentDistance:F2} / 판정 범위: {attackRange + attackHitBuffer:F2}");
         }
 
-        // ★ 추가 ★ 공격 애니메이션이 끝났다면 bool 값을 false로 (트리거를 썼다면 필요 없음)
-        // if (anim != null) anim.SetBool("IsAttack", false); 
-
         isAttacking = false; // 공격 종료 시점
 
         // --- 여기서부터 후퇴(Retreat) 로직 시작 ---
@@ -200,8 +198,6 @@ public class MelleEnemyAttackController : MonoBehaviour
             nvAgent.isStopped = false; // 후퇴를 위해 에이전트 활성화 (움직일 수 있도록)
             nvAgent.speed = originalAgentSpeed * retreatSpeedMultiplier; // 후퇴 시 속도 증가
 
-            // ★ 추가 ★ 후퇴할 때 달리기 애니메이션 켜주기 (MelleEnemyAI의 Update와 겹칠 수 있으므로 조심)
-            // 여기서는 MelleEnemyAI에서 nvAgent.velocity로 체크하므로 크게 문제되지 않을 거야.
 
             // 플레이어로부터 'targetRetreatDistanceFromPlayer' 만큼 떨어진 목표 지점 계산
             Vector3 playerPosAtAttack = player.position; // 공격 시점의 플레이어 위치 저장
