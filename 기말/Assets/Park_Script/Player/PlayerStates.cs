@@ -22,6 +22,19 @@ public class PlayerStates : MonoBehaviour
     Animator animator;
 
     bool check = true;
+    public void ApplyStatChanges()
+    {
+        
+        var upgrade = PlayerStatsUpgrade.Instance;
+
+        
+        maxHP += upgrade.hpBonus;
+        currentHP += upgrade.hpBonus;
+
+
+        UpdateHPBar();
+        Debug.Log($"스탯 적용됨 → HP:{maxHP}");
+    }
     public float getHealth()
     {
         return currentHP;
@@ -33,7 +46,7 @@ public class PlayerStates : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //체력 초기화 , 나중에 묶어서 메서드 만들거임
+        maxHP = 100f;
         currentHP = maxHP;
         UpdateHPBar();
         currentEXP = 0f;
@@ -78,6 +91,9 @@ public class PlayerStates : MonoBehaviour
             currentEXP -= maxEXP;
             level++;
             maxEXP *= 1.3f; // 다음 레벨 요구치 상승
+
+
+            LevelUpHandler.Instance.OnLevelUp(level); // 레벨업 ui
         }
         UpdateLevelUI();
         UpdateEXPBar();

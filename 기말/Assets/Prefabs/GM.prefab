@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6334256324095258263}
   - component: {fileID: 6129340544215490656}
+  - component: {fileID: 1535315408416720045}
+  - component: {fileID: 9093759090897908359}
   m_Layer: 0
   m_Name: GM
   m_TagString: Untagged
@@ -44,4 +46,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1127dcffbc2aa447afa3e33bda8cf70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 0}
   PlayerDead: 0
+--- !u!114 &1535315408416720045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385690190989322995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b9548a77e3f7c4d9b5a1aab874abac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choiceUI: {fileID: 0}
+  hpButton: {fileID: 0}
+  damageButton: {fileID: 0}
+  speedButton: {fileID: 0}
+--- !u!114 &9093759090897908359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385690190989322995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e18e4462b3d86d45871a8abf1437c1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choiceUI: {fileID: 0}
+  choiceButtons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  allSkills:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
