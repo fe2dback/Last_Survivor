@@ -12,6 +12,7 @@ public class MelleEnemyAI : MonoBehaviour
     // Animator 컴포넌트 참조
     public Animator anim;
 
+    private MelleEnemyAttackController attackController;
 
     private void Start()
     {
@@ -72,12 +73,63 @@ public class MelleEnemyAI : MonoBehaviour
         }
     }
 
+    // 적 움직임과 공격을 일시 정지하는 함수
+    public void PauseMovement(float duration)
+    {
+        // 스크립트가 비활성화된 상태(죽은 상태 등)라면 실행하지 않음
+        if (!this.enabled) return;
+
+        // 이미 일시 정지 코루틴이 실행 중이라면 멈추고 새로 시작
+        StopAllCoroutines(); // 이 스크립트에서 실행 중인 모든 코루틴을 멈춤
+        StartCoroutine(PauseMovementCoroutine(duration));
+    }
+
+    // 움직임 일시 정지 코루틴
+    private IEnumerator PauseMovementCoroutine(float duration)
+    {
+        bool wasNavAgentEnabled = false;
+        bool wasAttackControllerEnabled = false;
+
+        // NavMeshAgent 비활성화 및 애니메이션 끄기
+        if (nvAgent != null)
+        {
+            wasNavAgentEnabled = nvAgent.enabled; // 현재 상태 저장
+            nvAgent.isStopped = true;
+            nvAgent.enabled = false;
+            if (anim != null) anim.SetBool("IsRun", false); // 달리기 애니메이션 끄기
+        }
+        // 공격 컨트롤러 비활성화
+        if (attackController != null)
+        {
+            wasAttackControllerEnabled = attackController.enabled; // 현재 상태 저장
+            attackController.enabled = false;
+        }
+
+        yield return new WaitForSeconds(duration); // 정지 시간만큼 대기
+
+        // 정지 시간이 끝난 후 스크립트가 여전히 활성화 상태(죽지 않음)일 경우에만 복구
+        if (!this.enabled) yield break;
+
+        // NavMeshAgent 원래 상태로 복구
+        if (nvAgent != null && wasNavAgentEnabled)
+        {
+            nvAgent.enabled = true;
+            nvAgent.isStopped = false;
+        }
+        // 공격 컨트롤러 원래 상태로 복구
+        if (attackController != null && wasAttackControllerEnabled)
+        {
+            attackController.enabled = true;
+        }
+    }
+
     // 적이 죽었을 때 호출될 함수 
     public void Die()
     {
-        Debug.Log("적이 죽었습니다! Die 애니메이션 재생");
 
-        // 일단 적의 움직임과 공격을 바로 중단시킨다.
+        StopAllCoroutines(); // 죽을 때는 실행 중인 모든 코루틴 멈춤 (PauseMovement 포함)
+
+        // NavMeshAgent 비활성화
         if (nvAgent != null)
         {
             nvAgent.enabled = false;
@@ -93,8 +145,8 @@ public class MelleEnemyAI : MonoBehaviour
 
         // 이 스크립트도 비활성화 (Update 호출 중지)
         this.enabled = false;
+        Destroy(gameObject, 0.5f);
 
-        
     }
 
 }

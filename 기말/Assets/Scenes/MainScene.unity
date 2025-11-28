@@ -9907,6 +9907,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: MelleEnemyGenerator
       objectReference: {fileID: 0}
+    - target: {fileID: 5003605431584632902, guid: f7201592e784a0d41bdaee14293978c4, type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 4968952492317468120, guid: f90da0ad6134199439a2735fb27e0d46, type: 3}
+    - target: {fileID: 5003605431584632902, guid: f7201592e784a0d41bdaee14293978c4, type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 7022523474816696347}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21018,6 +21026,11 @@ PrefabInstance:
 --- !u!1 &7022523474816696338 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7911370593949680613, guid: 510e08957709cc6479ec1cf7367e6f0e, type: 3}
+  m_PrefabInstance: {fileID: 8878326276316438821}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7022523474816696347 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6385572677048491067, guid: 510e08957709cc6479ec1cf7367e6f0e, type: 3}
   m_PrefabInstance: {fileID: 8878326276316438821}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7143772325713155978 stripped
