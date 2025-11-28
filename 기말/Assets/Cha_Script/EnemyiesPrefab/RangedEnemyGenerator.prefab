@@ -96,9 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 564d75c718d5829418a648bf5653e128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 0}
+  enemyPrefab: {fileID: 7895867673165801691, guid: 2d4f51cd0285aa540a83ab0601196201, type: 3}
   baseSpawnCount: 1
-  spawnRadius: 5
+  spawnRadius: 20
   playerTransform: {fileID: 0}
-  disableSpawnRadius: 20
+  disableSpawnRadius: 40
   disableRadiusColor: {r: 1, g: 0, b: 0, a: 1}
