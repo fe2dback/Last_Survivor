@@ -20778,6 +20778,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangedEnemyGenerator
       objectReference: {fileID: 0}
+    - target: {fileID: 2031746931546835416, guid: 45d91502591dcda499fb3138fc7320d3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6197833742830953281, guid: 45d91502591dcda499fb3138fc7320d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5
@@ -21307,5 +21311,5 @@ SceneRoots:
   - {fileID: 1959196773}
   - {fileID: 966631573}
   - {fileID: 632875045}
-  - {fileID: 2275206223271069866}
   - {fileID: 434262401}
+  - {fileID: 2275206223271069866}

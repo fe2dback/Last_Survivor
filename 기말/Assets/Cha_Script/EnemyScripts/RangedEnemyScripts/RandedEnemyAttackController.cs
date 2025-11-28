@@ -148,30 +148,29 @@ public class RandedEnemyAttackController : MonoBehaviour
 
     private void FireBullet()
     {
-        if (bulletPrefab == null || firePoint == null)
-        {
-            Debug.LogWarning("RandedEnemyAttackController: bulletPrefab 또는 firePoint가 설정되지 않았습니다.", this);
-            return;
-        }
-
         GameObject bulletObj = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
-        // Rigidbody로 앞으로 날려보내기
+        // 플레이어 방향 계산
+        Vector3 dir = (player.position + Vector3.up * 1.0f - firePoint.position).normalized;
+        bulletObj.transform.rotation = Quaternion.LookRotation(dir);
+
         Rigidbody rb = bulletObj.GetComponent<Rigidbody>();
         if (rb != null)
-        {
-            rb.velocity = firePoint.forward * bulletSpeed;
-        }
+            rb.velocity = dir * bulletSpeed;
 
-        // Bullet 스크립트가 있다면 데미지 설정
+        //  총알이 적 자신과 충돌하는 것을 방지 (중요!)
+        Collider bulletCol = bulletObj.GetComponent<Collider>();
+        Collider myCol = GetComponent<Collider>();
+        if (bulletCol != null && myCol != null)
+            Physics.IgnoreCollision(bulletCol, myCol);
+
+        // 데미지 설정
         EnemyBullet bulletComp = bulletObj.GetComponent<EnemyBullet>();
         if (bulletComp != null)
-        {
             bulletComp.bulletDamage = attackDamage;
-        }
-
-        // 필요하다면 EnemyBullet 같은 별도 스크립트를 써도 됨
 
         Destroy(bulletObj, bulletLifeTime);
     }
+
+
 }
