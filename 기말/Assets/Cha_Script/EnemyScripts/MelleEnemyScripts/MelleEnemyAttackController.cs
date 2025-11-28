@@ -163,8 +163,6 @@ public class MelleEnemyAttackController : MonoBehaviour
             // 혹시 'IsAttack' 같은 bool 값을 쓴다면 SetBool("IsAttack", true);
         }
 
-        Debug.Log("[MelleEnemyAttackController] 적 공격 준비 (애니메이션 넣을 시 대기)");
-
         yield return new WaitForSeconds(attackDelay);
 
         // 공격 판정 로직
