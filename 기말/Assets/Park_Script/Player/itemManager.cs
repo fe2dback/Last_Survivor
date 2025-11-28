@@ -10,6 +10,8 @@ public class ItemManager : MonoBehaviour
 
     public bool HasGun = false;
 
+    [Header("배치된 quest:tag 아이템 개수")]
+    public int NeedQitem;
     int QuestItemCount;
 
     private void Awake()
@@ -47,7 +49,7 @@ public class ItemManager : MonoBehaviour
             DisplayInventory();
         }
 
-        if(QuestItemCount == 4)
+        if(QuestItemCount == NeedQitem)
         {
            Debug.Log("퀘스트 아이템 모두 획득");
         }
@@ -68,7 +70,7 @@ public class ItemManager : MonoBehaviour
             item.Add(itemName, quantity);
         }
 
-        if (item.ContainsKey("Quest"))
+        if (item.ContainsKey("quest"))
         {
             QuestItemCount += quantity;
             Debug.Log("Qitem");

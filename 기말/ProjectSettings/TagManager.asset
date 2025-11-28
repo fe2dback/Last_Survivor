@@ -13,6 +13,7 @@ TagManager:
   - gun
   - knife
   - Enemy
+  - quest
   layers:
   - Default
   - TransparentFX
