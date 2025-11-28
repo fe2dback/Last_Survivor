@@ -164,7 +164,7 @@ public class RandedEnemyAttackController : MonoBehaviour
         }
 
         // Bullet 스크립트가 있다면 데미지 설정
-        Bullet bulletComp = bulletObj.GetComponent<Bullet>();
+        EnemyBullet bulletComp = bulletObj.GetComponent<EnemyBullet>();
         if (bulletComp != null)
         {
             bulletComp.bulletDamage = attackDamage;
