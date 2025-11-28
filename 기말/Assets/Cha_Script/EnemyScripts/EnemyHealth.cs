@@ -48,7 +48,7 @@ public class EnemyHealth : MonoBehaviour
         currentHealth -= damage;
         Debug.Log("적 현재 체력: " + currentHealth);
 
-        // ★ 추가 ★ 데미지를 입었을 때 MelleEnemyAI에 정지 명령
+        // 데미지를 입었을 때 MelleEnemyAI에 정지 명령
         // 단, 아직 죽지 않았고 스크립트가 활성화된 상태일 때만!
         if (melleEnemyAI != null && this.enabled && currentHealth > 0)
         {

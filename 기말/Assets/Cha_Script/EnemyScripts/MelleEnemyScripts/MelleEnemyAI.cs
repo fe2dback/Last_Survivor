@@ -14,7 +14,7 @@ public class MelleEnemyAI : MonoBehaviour
 
     private MelleEnemyAttackController attackController;
 
-    private void Start()
+    protected virtual void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
     }
