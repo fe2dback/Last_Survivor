@@ -14,7 +14,7 @@ public class EnemyHealth : MonoBehaviour
 
     void Awake()
     {
-
+        
         enemyStats = GetComponent<EnemyStats>();
         melleEnemyAI = GetComponent<MelleEnemyAI>();
 
@@ -87,7 +87,9 @@ public class EnemyHealth : MonoBehaviour
         Debug.Log("적이 죽었습니다");
         if (melleEnemyAI != null)
         {
+            
             melleEnemyAI.Die(); // MelleEnemyAI가 자신의 컴포넌트 비활성화 및 오브젝트 파괴를 담당
+            PlayerStates.Instance.GainExp(20);
         }
         this.enabled = false; // EnemyHealth 스크립트도 비활성화 (더 이상 데미지 처리 안함)
 

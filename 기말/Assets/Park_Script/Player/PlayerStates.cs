@@ -6,6 +6,8 @@ using TMPro;
 
 public class PlayerStates : MonoBehaviour
 {
+    public static PlayerStates player;
+
     [Header("UI연결")]
     public Image hpFill;
     public Image expFill;
@@ -22,6 +24,31 @@ public class PlayerStates : MonoBehaviour
 
     Animator animator;
 
+
+    private void Awake()
+    {
+        if (player == null)
+        {
+            player = this;
+        }
+        else
+        {
+            Debug.LogError("중복된 인스턴스");
+            Destroy(gameObject);
+        }
+    }
+    public static PlayerStates Instance
+    {
+        get
+        {
+            if (player == null)
+            {
+                return null;
+            }
+            return player;
+        }
+
+    }
     bool check = true;
     public void ApplyStatChanges()
     {
