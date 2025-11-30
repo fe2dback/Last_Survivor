@@ -48,13 +48,47 @@ public class MelleEnemyAI : MonoBehaviour
                 Debug.LogWarning("MelleEnemyAI: 'Player(Kachujin G Rosales)' 오브젝트를 찾을 수 없습니다. 인스펙터에 플레이어를 수동으로 할당했거나, 태그를 사용해 찾는 걸 고려해보세요.", this);
             }
         }
+
+        attackController = GetComponent<MelleEnemyAttackController>();
     }
 
 
     void Update()
     {
+        /*
         if (player != null && nvAgent != null && nvAgent.enabled)
         {
+            bool isMoving = nvAgent.velocity.magnitude > 0.1f;
+
+            if (anim != null)
+            {
+                anim.SetBool("IsRun", isMoving);
+            }
+
+            if (!nvAgent.isStopped)
+            {
+                nvAgent.SetDestination(player.position);
+            }
+        }
+        else if (anim != null)
+        {
+            anim.SetBool("IsRun", false);
+        }*/
+        if (player != null && nvAgent != null && nvAgent.enabled)
+        {
+            // 1) 공격 후 '후퇴 중'이라면, 이동 목적지는 AttackController가 관리하게 두고
+            //    여기서는 SetDestination을 덮어쓰지 않는다.
+            if (attackController != null && attackController.IsRetreating)
+            {
+                bool isMovingWhileRetreat = nvAgent.velocity.magnitude > 0.1f;
+                if (anim != null)
+                {
+                    anim.SetBool("IsRun", isMovingWhileRetreat);
+                }
+                return; // 더 이상 추적 목적지 설정하지 않고 함수 끝
+            }
+
+            // 2) 평소(후퇴 중이 아닐 때)는 기존대로 플레이어를 추적
             bool isMoving = nvAgent.velocity.magnitude > 0.1f;
 
             if (anim != null)

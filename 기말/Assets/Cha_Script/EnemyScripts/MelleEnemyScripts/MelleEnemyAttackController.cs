@@ -20,11 +20,11 @@ public class MelleEnemyAttackController : MonoBehaviour
     public float attackRange = 1.8f; //공격 사거리 (기존: 1.5f)
     public float attackCooldown = 2.5f; //공격 쿨타임 (기존: 2f)
     public float attackDamage;//공격 데미지
-    public float attackDelay = 0.75f; //공격 판정 전 대기시간
+    private float attackDelay = 0.85f; //공격 판정 전 대기시간
     public float attackHitBuffer = 0.5f; // 공격 판정 시 attackRange에 더할 여유 범위 (기존: 0.2f)
 
     [Header("공격 후 움직임 설정")]
-    public float targetRetreatDistanceFromPlayer = 4.0f; //  공격 후 플레이어로부터 떨어질 목표 거리
+    public float targetRetreatDistanceFromPlayer = 3.0f; //  공격 후 플레이어로부터 떨어질 목표 거리
     public float retreatSpeedMultiplier = 2.0f; // 후퇴할 때의 속도 배율
     public float reEngageDelay = 0.7f; // 후퇴 후 다시 추격하기 전 잠시 대기 시간 (기존: 0.5f)
 
@@ -32,6 +32,7 @@ public class MelleEnemyAttackController : MonoBehaviour
     private bool isAttacking = false; //현재 공격 동작 중인지 여부
     private bool isRetreating = false; // 현재 후퇴 중인지 여부 (추가)
     private float originalAgentSpeed; // NavMeshAgent의 원래 속도 저장용
+    public bool IsRetreating => isRetreating;
 
     void Awake()
     {
