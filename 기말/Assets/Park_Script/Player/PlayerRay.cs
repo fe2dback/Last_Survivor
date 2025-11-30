@@ -56,8 +56,9 @@ public class PlayerRay : MonoBehaviour
                 {
                     switch (hitObject.collider.gameObject.tag)
                     {
-                        case "item":
+                        case "quest":
                             ItemManager.itemManager.getItem(hitObject.collider.gameObject.name, 1);
+                            GameManager.Instance.QuestItemCount++;
                             TakeItem();
                             break;
                         case "gun":
