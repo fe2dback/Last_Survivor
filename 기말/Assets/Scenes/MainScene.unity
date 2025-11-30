@@ -21808,7 +21808,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4968952492317468120, guid: f90da0ad6134199439a2735fb27e0d46, type: 3}
       propertyPath: m_Name
-      value: MelleEnemy
+      value: MeleeEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 4968952492317468120, guid: f90da0ad6134199439a2735fb27e0d46, type: 3}
       propertyPath: m_IsActive
