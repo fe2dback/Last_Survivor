@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class RandedEnemyAttackController : MonoBehaviour
+public class RangedEnemyAttackController : MonoBehaviour
 {
     private EnemyStats enemyStats;
     private int currentLevel;
@@ -116,7 +116,7 @@ public class RandedEnemyAttackController : MonoBehaviour
         isAttacking = true;
         lastAttackTime = Time.time;
 
-        // 공격 시 잠깐 정지(필요 없다면 제거해도 됨)
+        // 공격 시 잠깐 정지
         if (nvAgent != null && nvAgent.isOnNavMesh)
         {
             nvAgent.velocity = Vector3.zero;
@@ -134,7 +134,7 @@ public class RandedEnemyAttackController : MonoBehaviour
         // 공격 애니메이션
         if (anim != null)
         {
-            anim.SetTrigger("Attack");   // 기존 근접처럼 "Attack" 트리거 사용
+            anim.SetTrigger("Attack");  
         }
 
         // 애니메이션 상 발사 타이밍까지 대기
@@ -158,11 +158,11 @@ public class RandedEnemyAttackController : MonoBehaviour
         if (rb != null)
             rb.velocity = dir * bulletSpeed;
 
-        //  총알이 적 자신과 충돌하는 것을 방지 (중요!)
-        Collider bulletCol = bulletObj.GetComponent<Collider>();
-        Collider myCol = GetComponent<Collider>();
-        if (bulletCol != null && myCol != null)
-            Physics.IgnoreCollision(bulletCol, myCol);
+        //  총알이 적 자신과 충돌하는 것을 방지 
+        Collider bulletCollider = bulletObj.GetComponent<Collider>();
+        Collider RangedEnemyCollider = GetComponent<Collider>();
+        if (bulletCollider != null && RangedEnemyCollider != null)
+            Physics.IgnoreCollision(bulletCollider, RangedEnemyCollider);
 
         // 데미지 설정
         EnemyBullet bulletComp = bulletObj.GetComponent<EnemyBullet>();

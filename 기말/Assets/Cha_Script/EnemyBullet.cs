@@ -32,8 +32,8 @@ public class EnemyBullet : MonoBehaviour
         }
         else
         {
-            // 벽/바닥 충돌 시 삭제 (옵션)
-            if (!other.isTrigger && destroyOnHit)
+            // 벽/바닥 충돌 시 삭제
+            if (destroyOnHit)
             {
                 if (hitEffect != null)
                     Instantiate(hitEffect, transform.position, Quaternion.identity);

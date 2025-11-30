@@ -55,29 +55,9 @@ public class MelleEnemyAI : MonoBehaviour
 
     void Update()
     {
-        /*
-        if (player != null && nvAgent != null && nvAgent.enabled)
+        if (player != null && nvAgent != null && nvAgent.enabled && nvAgent.isOnNavMesh)
         {
-            bool isMoving = nvAgent.velocity.magnitude > 0.1f;
-
-            if (anim != null)
-            {
-                anim.SetBool("IsRun", isMoving);
-            }
-
-            if (!nvAgent.isStopped)
-            {
-                nvAgent.SetDestination(player.position);
-            }
-        }
-        else if (anim != null)
-        {
-            anim.SetBool("IsRun", false);
-        }*/
-        if (player != null && nvAgent != null && nvAgent.enabled)
-        {
-            // 1) 공격 후 '후퇴 중'이라면, 이동 목적지는 AttackController가 관리하게 두고
-            //    여기서는 SetDestination을 덮어쓰지 않는다.
+            //  공격 후 '후퇴 중'이라면, 이동 목적지는 AttackController가 관리하게 두고 여기서는 SetDestination을 덮어쓰지 않는다.
             if (attackController != null && attackController.IsRetreating)
             {
                 bool isMovingWhileRetreat = nvAgent.velocity.magnitude > 0.1f;

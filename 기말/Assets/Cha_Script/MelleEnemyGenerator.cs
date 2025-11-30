@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MelleEnemyGenerator : MonoBehaviour
 {
@@ -91,10 +92,25 @@ public class MelleEnemyGenerator : MonoBehaviour
 
         for (int i = 0; i < spawnCount; i++)
         {
-            Vector3 spawnPos = transform.position + Random.insideUnitSphere * spawnRadius;
-            spawnPos.y = transform.position.y; // y 고정 (필요에 따라 조절)
+            // 1) 대략적인 랜덤 위치
+            Vector3 randomPos = transform.position + Random.insideUnitSphere * spawnRadius;
+            randomPos.y = transform.position.y;
 
-            Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+            // 2) NavMesh 위의 가장 가까운 점 찾기
+            NavMeshHit hit;
+            float maxDistance = 5f; // 이 반경 안에서 NavMesh를 찾음
+
+            if (NavMesh.SamplePosition(randomPos, out hit, maxDistance, NavMesh.AllAreas))
+            {
+                // NavMesh 위에서 스폰
+                Vector3 spawnPos = hit.position;
+                Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+            }
+            else
+            {
+                // 이 위치 근처에 NavMesh가 없으면 스폰 포기 (디버그용 메시지)
+                Debug.LogWarning("MelleEnemyGenerator: NavMesh 위를 찾지 못해 이 적 스폰을 건너뜁니다.");
+            }
         }
     }
 
